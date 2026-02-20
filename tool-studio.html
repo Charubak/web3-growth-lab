@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool Studio — Charubak</title>
+  <meta name="description" content="Run Charubak's Web3 AI tools directly from browser: Competitive Deep-Dive and Protocol Positioning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/tool-studio.css" />
+</head>
+<body>
+  <nav class="nav scrolled" id="main-nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">C<span>.</span>C</a>
+        <ul class="nav__links">
+          <li><a href="index.html#story">Story</a></li>
+          <li><a href="index.html#tools">Tools</a></li>
+          <li><a href="tool-studio.html">Live Studio</a></li>
+          <li><a href="resume.html">CV</a></li>
+          <li><a href="mailto:charubak.chakrabarti@gmail.com" class="nav__cta">Book Demo</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="studio-page">
+    <section class="studio-hero">
+      <div class="container">
+        <span class="section-label">Live Product Demo</span>
+        <h1 class="studio-title">Tool <em>Studio</em></h1>
+        <p class="studio-subtitle">
+          Run my AI-powered Web3 marketing tools directly from the browser.
+          No CLI, no setup, just input and execute.
+        </p>
+      </div>
+    </section>
+
+    <section class="studio-shell">
+      <div class="container studio-grid">
+        <aside class="studio-sidebar reveal">
+          <h2>Tools</h2>
+          <button class="tool-tab active" data-tool="competitive-deep-dive" type="button">
+            <span>Competitive Deep-Dive</span>
+            <small>Report generator</small>
+          </button>
+          <button class="tool-tab" data-tool="protocol-positioning" type="button">
+            <span>Protocol Positioning</span>
+            <small>Positioning matrix</small>
+          </button>
+
+          <div class="studio-note">
+            <h3>Telegram Bots</h3>
+            <p>Telegram-native workflows stay in Telegram. Web controls for those are next in roadmap.</p>
+          </div>
+        </aside>
+
+        <section class="studio-main reveal">
+          <div class="tool-panel active" data-panel="competitive-deep-dive">
+            <header class="panel-head">
+              <h3>Competitive Deep-Dive</h3>
+              <p>Generate a full competitor intelligence report (Markdown + Word).</p>
+            </header>
+            <form id="form-deep-dive" class="tool-form">
+              <label>
+                Your Project (for personalization)
+                <input name="your_project" placeholder="e.g. Forecastathon" />
+              </label>
+              <label>
+                Competitor Name
+                <input name="competitor_name" required placeholder="e.g. Hyperliquid" />
+              </label>
+              <label>
+                Competitor Website
+                <input name="competitor_website" placeholder="https://..." />
+              </label>
+              <label>
+                Context Hint
+                <textarea name="competitor_context" rows="3" placeholder="Anything specific to focus on..."></textarea>
+              </label>
+              <button type="submit" class="btn btn--primary">Run Deep-Dive</button>
+            </form>
+          </div>
+
+          <div class="tool-panel" data-panel="protocol-positioning">
+            <header class="panel-head">
+              <h3>Protocol Positioning</h3>
+              <p>Compare your protocol against a competitor and generate positioning outputs.</p>
+            </header>
+            <form id="form-positioning" class="tool-form">
+              <label>
+                Your Protocol Name
+                <input name="your_protocol_name" required placeholder="e.g. MyProtocol" />
+              </label>
+              <label>
+                Your Protocol Website
+                <input name="your_protocol_website" placeholder="https://..." />
+              </label>
+              <label>
+                Your Context
+                <textarea name="your_protocol_context" rows="3" placeholder="Any strategy or messaging context..."></textarea>
+              </label>
+              <label>
+                Competitor Name
+                <input name="competitor_name" required placeholder="e.g. CompetitorX" />
+              </label>
+              <label>
+                Competitor Website
+                <input name="competitor_website" placeholder="https://..." />
+              </label>
+              <label>
+                Competitor Context
+                <textarea name="competitor_context" rows="3" placeholder="Optional context for competitor..."></textarea>
+              </label>
+              <button type="submit" class="btn btn--primary">Run Positioning</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="studio-output reveal">
+          <header class="panel-head">
+            <h3>Execution Log</h3>
+            <p id="job-status">Idle</p>
+          </header>
+          <pre id="terminal-log" class="terminal-log">Ready. Run a tool to see live output...</pre>
+
+          <div class="artifact-box">
+            <h4>Generated Files</h4>
+            <div id="artifact-list" class="artifact-list">
+              <p class="artifact-empty">No files yet.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/tool-studio.js"></script>
+</body>
+</html>

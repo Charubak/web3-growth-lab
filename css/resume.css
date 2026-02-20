@@ -30,7 +30,7 @@
 }
 .cv-title {
   font-size: 16px;
-  color: var(--purple-l);
+  color: var(--accent-light);
   font-weight: 600;
   margin-bottom: 14px;
 }
@@ -46,7 +46,7 @@
   color: var(--text-dim);
   transition: color var(--t);
 }
-.cv-contacts a:hover { color: var(--purple-l); }
+.cv-contacts a:hover { color: var(--accent-light); }
 .cv-sep { margin: 0 10px; color: var(--text-muted); }
 
 /* Sections */
@@ -58,7 +58,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  color: var(--purple-l);
+  color: var(--accent-light);
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
@@ -92,7 +92,7 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--purple-l);
+  color: var(--accent-light);
   font-weight: 700;
   font-size: 13px;
   top: 2px;
@@ -112,7 +112,7 @@
   transition: border-color var(--t), transform var(--t);
 }
 .cv-project-item:hover {
-  border-color: rgba(139,92,246,.25);
+  border-color: rgba(232,121,58,.25);
   transform: translateY(-2px);
 }
 .cv-project-header {
@@ -130,11 +130,11 @@
 }
 .cv-project-link {
   font-size: 11px;
-  color: var(--cyan);
+  color: var(--accent);
   font-family: 'JetBrains Mono', monospace;
   transition: color var(--t);
 }
-.cv-project-link:hover { color: var(--cyan-l); }
+.cv-project-link:hover { color: var(--accent-light); }
 .cv-private {
   font-size: 11px;
   color: var(--text-muted);
@@ -158,10 +158,10 @@
 .cv-project-tags span {
   font-size: 11px;
   padding: 3px 10px;
-  background: rgba(139,92,246,.1);
-  border: 1px solid rgba(139,92,246,.15);
+  background: rgba(232,121,58,.1);
+  border: 1px solid rgba(232,121,58,.15);
   border-radius: var(--r-pill);
-  color: var(--purple-l);
+  color: var(--accent-light);
   font-weight: 500;
 }
 
@@ -215,7 +215,7 @@
 }
 .cv-job-company {
   font-size: 14px;
-  color: var(--purple-l);
+  color: var(--accent-light);
   font-weight: 500;
 }
 .cv-concurrent {
@@ -250,7 +250,7 @@
   content: '·';
   position: absolute;
   left: 4px;
-  color: var(--purple-l);
+  color: var(--accent-light);
   font-size: 18px;
   line-height: 1;
   top: 2px;
@@ -325,10 +325,10 @@
 }
 .cl-sign-links a {
   font-size: 13px;
-  color: var(--purple-l);
+  color: var(--accent-light);
   transition: color var(--t);
 }
-.cl-sign-links a:hover { color: var(--cyan); }
+.cl-sign-links a:hover { color: var(--accent); }
 
 /* Responsive */
 @media (max-width: 768px) {
