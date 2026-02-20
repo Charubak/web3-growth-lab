@@ -104,6 +104,38 @@ For production hosting:
 - Add auth/rate limits before public exposure of execution endpoints
 - Configure CORS explicitly for production domains
 
+## Live Domain Deployment (web3growthlab.com)
+
+This repo is configured for GitHub Pages deployment:
+- Workflow: `.github/workflows/deploy-pages.yml`
+- Custom domain file: `CNAME`
+- Jekyll disabled: `.nojekyll`
+
+How it goes live:
+1. Push to `main`
+2. GitHub Actions deploys to Pages
+3. DNS for `web3growthlab.com` points to GitHub Pages
+
+DNS records to add at your registrar:
+- `A` record `@` -> `185.199.108.153`
+- `A` record `@` -> `185.199.109.153`
+- `A` record `@` -> `185.199.110.153`
+- `A` record `@` -> `185.199.111.153`
+- `CNAME` record `www` -> `charubak.github.io`
+
+After DNS propagates, both of these should work:
+- `https://web3growthlab.com`
+- `https://www.web3growthlab.com`
+
+## How To Make Future Website Changes
+
+1. Edit files locally in this repo.
+2. Preview locally:
+   - `python3 serve.py`
+   - open `https://localhost:8443`
+3. Commit and push to `main`.
+4. GitHub Actions auto-deploys the update.
+
 ## Suggested Next Steps
 
 - Add authentication to Tool Studio runs
