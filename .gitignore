@@ -1,0 +1,10 @@
+# SSL certs (local dev only)
+cert.pem
+key.pem
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp

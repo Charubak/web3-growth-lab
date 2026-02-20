@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charubak Chakrabarti - CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/resume.css" />
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">CC</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="resume.html" class="active">CV</a></li>
+        <li><a href="cover-letter.html">Cover Letter</a></li>
+      </ul>
+      <a href="downloads/Charubak_Chakrabarti_CV.pdf" download class="btn btn-ghost btn-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="index.html" class="nav-mobile-link">← Back to Portfolio</a>
+      <a href="resume.html" class="nav-mobile-link">CV</a>
+      <a href="cover-letter.html" class="nav-mobile-link">Cover Letter</a>
+    </div>
+  </nav>
+
+  <main class="cv-page">
+    <div class="cv-container">
+
+      <!-- Header -->
+      <header class="cv-header reveal">
+        <div class="cv-header-text">
+          <h1>Charubak Chakrabarti</h1>
+          <p class="cv-title">Web3 Marketing Lead &amp; AI Tool Builder</p>
+          <div class="cv-contacts">
+            <a href="mailto:charubak.chakrabarti@gmail.com">charubak.chakrabarti@gmail.com</a>
+            <span class="cv-sep">·</span>
+            <a href="https://x.com/thedeludedbull" target="_blank">@thedeludedbull</a>
+            <span class="cv-sep">·</span>
+            <a href="https://linkedin.com/in/charubak-chakrabarti" target="_blank">LinkedIn</a>
+            <span class="cv-sep">·</span>
+            <a href="https://github.com/Charubak" target="_blank">github.com/Charubak</a>
+          </div>
+        </div>
+        <a href="downloads/Charubak_Chakrabarti_CV.pdf" download class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </header>
+
+      <!-- Summary -->
+      <section class="cv-section reveal">
+        <h2 class="cv-section-title">Summary</h2>
+        <p class="cv-summary">
+          Data-driven blockchain marketing leader with 5+ years in Web3 and 10+ years in marketing overall. Proven track record scaling user acquisition and community growth across L1 infrastructure, perpetual DEXs, and prediction markets  -  delivering 100K+ user signups, 30K+ community members, and measurable trading activity. Strong in growth marketing, KOL partnerships, GTM execution, funnel optimisation, and performance analytics. Also an AI builder: shipped 5 automation tools for competitive intelligence, narrative monitoring, and market positioning.
+        </p>
+      </section>
+
+      <!-- Key Achievements -->
+      <section class="cv-section reveal">
+        <h2 class="cv-section-title">Key Achievements</h2>
+        <ul class="cv-achievements">
+          <li>Increased daily signups 10× (10 → 100+) on Forecastathon by optimising onboarding with Web3Auth</li>
+          <li>Onboarded 2,500+ quantitative traders and data scientists across 4 Forecastathon seasons</li>
+          <li>Generated 70,000+ signups for RFX Exchange (zkSync perp DEX) closed alpha; 25% converted to real traders</li>
+          <li>Built community of 18,000+ members at Relative Finance; drove 595,000+ quest completions via Zealy &amp; Galxe</li>
+          <li>Acquired 12,000+ gamers for Showdown organically  -  zero ad spend</li>
+          <li>Built forecastathon.ai competition website end-to-end using Claude Code  -  design through deployment</li>
+          <li>Recruited Robin Hanson (father of prediction markets) and Corey Hoffstein (quant finance) as advisors</li>
+          <li>Shipped 5 AI automation tools replacing hours of manual competitive intelligence and monitoring work</li>
+        </ul>
+      </section>
+
+      <!-- AI Personal Projects  -  NEW SECTION -->
+      <section class="cv-section reveal">
+        <h2 class="cv-section-title">AI Personal Projects</h2>
+        <p class="cv-section-intro">Built independently to automate the intelligence and positioning work every Web3 marketing team needs.</p>
+
+        <div class="cv-projects-grid">
+          <div class="cv-project-item">
+            <div class="cv-project-header">
+              <span class="cv-project-icon">🕵️</span>
+              <div>
+                <h3>Competitor Move Monitor</h3>
+                <a href="https://github.com/Charubak/competitor-monitor" target="_blank" class="cv-project-link">github.com/Charubak/competitor-monitor</a>
+              </div>
+            </div>
+            <p>24/7 Telegram bot that watches a configurable competitor list and fires AI-generated alerts for significant moves  -  product launches, funding rounds, partnerships, chain integrations. Each alert includes personalised competitive analysis via Claude Haiku.</p>
+            <div class="cv-project-tags">
+              <span>Python</span><span>Claude Haiku</span><span>Telegram</span><span>SQLite</span>
+            </div>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-header">
+              <span class="cv-project-icon">🎯</span>
+              <div>
+                <h3>Narrative Hijacking Monitor</h3>
+                <a href="https://github.com/Charubak/narrative-monitor" target="_blank" class="cv-project-link">github.com/Charubak/narrative-monitor</a>
+              </div>
+            </div>
+            <p>Scans 11 crypto news RSS sources continuously, scores hijacking opportunities 1–10, and sends ready-to-post tweet, thread, and LinkedIn drafts to Telegram in real time.</p>
+            <div class="cv-project-tags">
+              <span>Python</span><span>Groq LLM</span><span>Telegram</span><span>RSS</span>
+            </div>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-header">
+              <span class="cv-project-icon">🔬</span>
+              <div>
+                <h3>Competitive Deep-Dive Tool</h3>
+                <span class="cv-private">Private</span>
+              </div>
+            </div>
+            <p>Auto-discovers competitors for any Web3 project via AI, then generates 12-section intelligence reports using live data from DeFiLlama, CoinGecko, GitHub, and LunarCrush. Exports to Markdown and Word.</p>
+            <div class="cv-project-tags">
+              <span>Python</span><span>Claude AI</span><span>DeFiLlama</span><span>CoinGecko</span>
+            </div>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-header">
+              <span class="cv-project-icon">📊</span>
+              <div>
+                <h3>Protocol Positioning Matrix</h3>
+                <span class="cv-private">Private</span>
+              </div>
+            </div>
+            <p>Generates competitive positioning reports for any DeFi protocol  -  pulls live TVL, fees, GitHub velocity, and social data, then synthesises narrative angles and positioning gaps vs. competitors.</p>
+            <div class="cv-project-tags">
+              <span>Python</span><span>Claude AI</span><span>DeFiLlama</span><span>CoinGecko</span>
+            </div>
+          </div>
+
+          <div class="cv-project-item">
+            <div class="cv-project-header">
+              <span class="cv-project-icon">💼</span>
+              <div>
+                <h3>Web3 Career Bot</h3>
+                <a href="https://github.com/Charubak/web3-career-bot" target="_blank" class="cv-project-link">github.com/Charubak/web3-career-bot</a>
+              </div>
+            </div>
+            <p>Open-source Telegram bot for Web3 job hunting. Scrapes 15+ job boards, filters by role type and location, delivers daily digests. Deployed on Fly.io.</p>
+            <div class="cv-project-tags">
+              <span>Python</span><span>Telegram</span><span>SQLite</span><span>Open Source</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="cv-section reveal">
+        <h2 class="cv-section-title">Skills</h2>
+        <div class="cv-skills-grid">
+          <div class="cv-skill-row">
+            <span class="cv-skill-label">Marketing</span>
+            <span class="cv-skill-value">Growth Marketing, Product Marketing, KOL &amp; Influencer Marketing, Paid Ads (X/Reddit/LinkedIn), Email Marketing, Content Strategy, GTM Strategy, Funnel Optimisation, Ecosystem Partnerships</span>
+          </div>
+          <div class="cv-skill-row">
+            <span class="cv-skill-label">Analytics &amp; Tools</span>
+            <span class="cv-skill-value">Grafana, Plausible, Timescale, Google Analytics, HeyReach, Blaze, Galxe, Zealy, ClickUp</span>
+          </div>
+          <div class="cv-skill-row">
+            <span class="cv-skill-label">AI &amp; Builder</span>
+            <span class="cv-skill-value">Python, Claude Code, Telegram Bots, SQLite, REST APIs, Fly.io  -  ChatGPT, Cursor, Perplexity, Gemini Pro, ElevenLabs, Midjourney</span>
+          </div>
+          <div class="cv-skill-row">
+            <span class="cv-skill-label">Platforms</span>
+            <span class="cv-skill-value">Discord, Telegram, Twitter/X, LinkedIn, Medium, Notion, Slack, GitHub</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="cv-section reveal">
+        <h2 class="cv-section-title">Work Experience</h2>
+
+        <div class="cv-job reveal">
+          <div class="cv-job-header">
+            <div>
+              <h3 class="cv-job-title">Marketing Lead</h3>
+              <p class="cv-job-company">Clearmatics  -  Autonity (L1 for Autonomous Futures &amp; Prediction Markets)</p>
+            </div>
+            <span class="cv-job-date">2022 – Present</span>
+          </div>
+          <ul class="cv-job-bullets">
+            <li>Launched and scaled Forecastathon  -  a global prediction market and trading competition onboarding 2,500+ quant traders across 4 seasons</li>
+            <li>Increased daily signups 10× by implementing Web3Auth and redesigning the onboarding flow</li>
+            <li>Built marketing data and analytics infrastructure on Grafana using Plausible and Timescale</li>
+            <li>Built forecastathon.ai competition website end-to-end on GitHub using Claude Code</li>
+            <li>Automated marketing workflows using AI  -  bots for competitor monitoring, event tracking, and content generation</li>
+            <li>Ran paid campaigns on X, Reddit, and LinkedIn Ads with A/B tested copy, achieving positive ROAS</li>
+            <li>Built and managed quant and data science KOL network  -  sourcing, negotiations, briefs, and ROI tracking</li>
+            <li>Recruited Robin Hanson (father of prediction markets) and Corey Hoffstein as advisors</li>
+            <li>Secured strategic partnership with CrunchDAO for BTC volatility prediction models</li>
+            <li>Represented Autonity at Token2049, EthCC, Istanbul Blockchain Week, and Korea Blockchain Week</li>
+          </ul>
+        </div>
+
+        <div class="cv-job reveal">
+          <div class="cv-job-header">
+            <div>
+              <h3 class="cv-job-title">Marketing Lead</h3>
+              <p class="cv-job-company">RFX Exchange  -  Perpetual DEX on zkSync</p>
+            </div>
+            <span class="cv-job-date">2023</span>
+          </div>
+          <ul class="cv-job-bullets">
+            <li>Drove 70,000+ signups for closed alpha testnet, converting 25% to active traders</li>
+            <li>Built KOL program from zero  -  sourced 30+ influencers, negotiated deals, managed deliverables</li>
+            <li>Closed strategic protocol integrations with Zyfi, Lido, Elixir, and Across</li>
+            <li>Positioned RFX among the top perpetual DEX narratives on zkSync through narrative-driven GTM strategy</li>
+          </ul>
+        </div>
+
+        <div class="cv-job reveal">
+          <div class="cv-job-header">
+            <div>
+              <h3 class="cv-job-title">Marketing Lead</h3>
+              <p class="cv-job-company">Showdown Gaming  -  Web3 Esports Platform <span class="cv-concurrent">(concurrent with RFX)</span></p>
+            </div>
+            <span class="cv-job-date">2023</span>
+          </div>
+          <ul class="cv-job-bullets">
+            <li>Grew V2 platform to 12,000+ users globally  -  zero ad spend</li>
+            <li>Targeted chess and CS2 gaming communities via Reddit, Discord, and Twitter</li>
+            <li>Organised esports competitions including Gladiator Esports League and High IQ chess tournaments</li>
+          </ul>
+        </div>
+
+        <div class="cv-job reveal">
+          <div class="cv-job-header">
+            <div>
+              <h3 class="cv-job-title">Marketing Lead</h3>
+              <p class="cv-job-company">Relative Finance  -  DeFi Wagering Platform</p>
+            </div>
+            <span class="cv-job-date">2022 – 2023</span>
+          </div>
+          <ul class="cv-job-bullets">
+            <li>Grew community to 18,000+ members; drove 595,000+ quest completions via Zealy and Galxe</li>
+            <li>Launched P2P Wagering product on inEVM  -  owned full GTM strategy</li>
+            <li>Established partnerships with Timeswap Labs, InterportFi, and 10+ ecosystem projects</li>
+          </ul>
+        </div>
+
+        <div class="cv-job reveal">
+          <div class="cv-job-header">
+            <div>
+              <h3 class="cv-job-title">Head of Marketing</h3>
+              <p class="cv-job-company">Mozaic Finance  -  AI-powered DeFi Yield Aggregator</p>
+            </div>
+            <span class="cv-job-date">2022</span>
+          </div>
+          <ul class="cv-job-bullets">
+            <li>Led marketing team of 4  -  implemented ClickUp workflows and content calendar</li>
+            <li>Built VC outreach database of 1,000+ contacts to support Series A fundraising</li>
+            <li>Conducted competitive analysis vs. Yearn, Beefy, and Autofarm for market positioning</li>
+          </ul>
+        </div>
+
+        <div class="cv-job reveal">
+          <div class="cv-job-header">
+            <div>
+              <h3 class="cv-job-title">Project Manager / Content Lead</h3>
+              <p class="cv-job-company">EdTech  -  Byju's, Toppr, Skillsoft, Vedantu, Infinity Learn</p>
+            </div>
+            <span class="cv-job-date">2013 – 2021</span>
+          </div>
+          <ul class="cv-job-bullets">
+            <li>Managed end-to-end content pipelines for animated educational videos, live classes, and syllabus development</li>
+            <li>Coordinated cross-functional teams for product launches and feature rollouts</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Writing -->
+      <section class="cv-section reveal">
+        <h2 class="cv-section-title">Articles &amp; Writing</h2>
+        <ul class="cv-writing">
+          <li>The Forecastathon: Where Models Meet Markets</li>
+          <li>How I Built a Prediction Market on Autonity Using Claude Code</li>
+          <li>Why Does the Forecastathon Matter?</li>
+        </ul>
+      </section>
+
+      <!-- Footer CTA -->
+      <div class="cv-footer-cta reveal">
+        <a href="downloads/Charubak_Chakrabarti_CV.pdf" download class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Full CV (PDF)
+        </a>
+        <a href="cover-letter.html" class="btn btn-ghost btn-lg">View Cover Letter →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Charubak Chakrabarti · 2025</span>
+      <div class="footer-links">
+        <a href="index.html">Portfolio</a>
+        <a href="https://github.com/Charubak" target="_blank">GitHub</a>
+        <a href="mailto:charubak.chakrabarti@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

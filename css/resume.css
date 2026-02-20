@@ -1,0 +1,364 @@
+/* ── Resume / Cover Letter pages ─────────────────────────────────────────── */
+
+.cv-page {
+  padding-top: 100px;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.cv-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.cv-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.cv-header h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+}
+.cv-title {
+  font-size: 16px;
+  color: var(--purple-l);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.cv-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  font-size: 13px;
+  color: var(--text-dim);
+  align-items: center;
+}
+.cv-contacts a {
+  color: var(--text-dim);
+  transition: color var(--t);
+}
+.cv-contacts a:hover { color: var(--purple-l); }
+.cv-sep { margin: 0 10px; color: var(--text-muted); }
+
+/* Sections */
+.cv-section {
+  margin-bottom: 52px;
+}
+.cv-section-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--purple-l);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.cv-summary {
+  font-size: 16px;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+.cv-section-intro {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* Achievements */
+.cv-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cv-achievements li {
+  font-size: 15px;
+  color: var(--text-dim);
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.6;
+}
+.cv-achievements li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--purple-l);
+  font-weight: 700;
+  font-size: 13px;
+  top: 2px;
+}
+
+/* AI Projects grid */
+.cv-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cv-project-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  transition: border-color var(--t), transform var(--t);
+}
+.cv-project-item:hover {
+  border-color: rgba(139,92,246,.25);
+  transform: translateY(-2px);
+}
+.cv-project-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.cv-project-icon { font-size: 22px; flex-shrink: 0; }
+.cv-project-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.cv-project-link {
+  font-size: 11px;
+  color: var(--cyan);
+  font-family: 'JetBrains Mono', monospace;
+  transition: color var(--t);
+}
+.cv-project-link:hover { color: var(--cyan-l); }
+.cv-private {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(148,163,184,.1);
+  border: 1px solid rgba(148,163,184,.15);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+}
+.cv-project-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.cv-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cv-project-tags span {
+  font-size: 11px;
+  padding: 3px 10px;
+  background: rgba(139,92,246,.1);
+  border: 1px solid rgba(139,92,246,.15);
+  border-radius: var(--r-pill);
+  color: var(--purple-l);
+  font-weight: 500;
+}
+
+/* Skills */
+.cv-skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cv-skill-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cv-skill-row:last-child { border-bottom: none; }
+.cv-skill-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.cv-skill-value {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Jobs */
+.cv-job {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border);
+}
+.cv-job:last-child { border-bottom: none; margin-bottom: 0; }
+.cv-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.cv-job-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.cv-job-company {
+  font-size: 14px;
+  color: var(--purple-l);
+  font-weight: 500;
+}
+.cv-concurrent {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.cv-job-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  flex-shrink: 0;
+}
+.cv-job-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cv-job-bullets li {
+  font-size: 14px;
+  color: var(--text-dim);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.65;
+}
+.cv-job-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--purple-l);
+  font-size: 18px;
+  line-height: 1;
+  top: 2px;
+}
+
+/* Writing */
+.cv-writing {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cv-writing li {
+  font-size: 15px;
+  color: var(--text-dim);
+  padding-left: 22px;
+  position: relative;
+}
+.cv-writing li::before {
+  content: '✍';
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+}
+
+/* Footer CTA */
+.cv-footer-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 48px 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+/* Cover letter */
+.cl-body {
+  max-width: 680px;
+}
+.cl-salutation {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+.cl-body p {
+  font-size: 16px;
+  color: var(--text-dim);
+  line-height: 1.85;
+  margin-bottom: 22px;
+}
+.cl-sign {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.cl-sign p {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.cl-name {
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px !important;
+}
+.cl-sign-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cl-sign-links a {
+  font-size: 13px;
+  color: var(--purple-l);
+  transition: color var(--t);
+}
+.cl-sign-links a:hover { color: var(--cyan); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cv-header { flex-direction: column; }
+  .cv-header .btn { align-self: flex-start; }
+  .cv-projects-grid { grid-template-columns: 1fr; }
+  .cv-skill-row { grid-template-columns: 1fr; gap: 4px; }
+  .cv-job-header { flex-direction: column; gap: 8px; }
+  .cv-footer-cta { flex-direction: column; }
+}
+
+/* Print styles */
+@media print {
+  #nav, footer, .cv-footer-cta { display: none !important; }
+  body { background: white; color: #1a1a1a; }
+  .cv-page { padding-top: 20px; }
+  .cv-section-title { color: #6d28d9; }
+  .cv-job-company, .cv-project-link { color: #7c3aed; }
+  .cv-header h1 { color: #1a1a1a; }
+  .cv-title { color: #7c3aed; }
+  .cv-summary, .cv-achievements li, .cv-job-bullets li, .cl-body p {
+    color: #374151;
+  }
+  .cv-project-item {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+  }
+  .cv-job-date {
+    background: #f3f4f6;
+    border-color: #e5e7eb;
+    color: #374151;
+  }
+}
