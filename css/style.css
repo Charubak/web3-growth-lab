@@ -136,7 +136,7 @@ body.performance-mode .story__sidebar {
 section { padding: clamp(56px, 7vw, 96px) 0; }
 
 /* ═══════════════════════════════════════════════════════
-   NAVIGATION (new BEM — index.html)
+   NAVIGATION (new BEM - index.html)
    ═══════════════════════════════════════════════════════ */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -191,7 +191,7 @@ section { padding: clamp(56px, 7vw, 96px) 0; }
 .nav__cta:hover { background: var(--accent-light); transform: translateY(-1px); }
 .nav__cta::after { display: none !important; }
 
-/* Mobile hamburger — hidden on desktop for new nav */
+/* Mobile hamburger - hidden on desktop for new nav */
 .nav__hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
 .nav__hamburger span {
   display: block; width: 22px; height: 2px;
@@ -934,7 +934,7 @@ footer, .footer { padding: 32px 0; border-top: 1px solid var(--border); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Scroll reveal elements — start hidden, JS adds .visible */
+/* Scroll reveal elements - start hidden, JS adds .visible */
 .reveal {
   opacity: 0;
   transform: translateY(36px);

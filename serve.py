@@ -27,14 +27,14 @@ def check_mkcert():
 
 
 def generate_certs_mkcert():
-    print("[serve] Using mkcert — browser will trust this cert automatically.")
+    print("[serve] Using mkcert - browser will trust this cert automatically.")
     subprocess.run(["mkcert", "-install"], check=True, capture_output=True)
     subprocess.run(["mkcert", "-key-file", KEY, "-cert-file", CERT, "localhost", "127.0.0.1"], check=True)
     print("[serve] Trusted cert generated via mkcert.")
 
 
 def generate_certs_openssl():
-    print("[serve] mkcert not found — generating self-signed cert with openssl.")
+    print("[serve] mkcert not found - generating self-signed cert with openssl.")
     print("[serve] You will need to click 'Advanced → Proceed to localhost' in your browser.")
     subprocess.run([
         "openssl", "req", "-x509", "-newkey", "rsa:2048",
