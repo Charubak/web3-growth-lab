@@ -1,0 +1,28 @@
+app = "web3growthlab-api"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  TOOL_STUDIO_MODE = "demo"
+  TOOL_STUDIO_TLS = "0"
+  TOOL_STUDIO_ALLOWED_ORIGINS = "https://web3growthlab.com,https://www.web3growthlab.com"
+  TOOL_STUDIO_MAX_RUNNING_JOBS = "2"
+  TOOL_STUDIO_RATE_POST_MAX = "8"
+  TOOL_STUDIO_RATE_GET_MAX = "120"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_start_machines = true
+  auto_stop_machines = false
+  min_machines_running = 1
+  processes = ["app"]
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    timeout = "5s"
+    path = "/api/health"

@@ -3,15 +3,60 @@ const panels = Array.from(document.querySelectorAll('.tool-panel'));
 const statusEl = document.getElementById('job-status');
 const terminalEl = document.getElementById('terminal-log');
 const artifactListEl = document.getElementById('artifact-list');
-const apiOrigin = window.location.port === '8450'
-  ? window.location.origin
-  : `${window.location.protocol}//${window.location.hostname}:8450`;
+const PROD_API_ORIGIN = 'https://api.web3growthlab.com';
+const BACKUP_API_ORIGIN = 'https://web3growthlab-api.fly.dev';
+
+function resolveApiOrigin() {
+  const params = new URLSearchParams(window.location.search);
+  const override = (params.get('api') || '').trim();
+  if (override) return override.replace(/\/+$/, '');
+
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return `${window.location.protocol}//${host}:8450`;
+  }
+
+  if (host === 'api.web3growthlab.com') {
+    return window.location.origin;
+  }
+
+  return PROD_API_ORIGIN;
+}
+
+const apiOrigin = resolveApiOrigin();
+let activeApiOrigin = apiOrigin;
+const params = new URLSearchParams(window.location.search);
+const urlKey = (params.get('key') || '').trim();
+if (urlKey) {
+  localStorage.setItem('toolStudioApiKey', urlKey);
+}
+const toolStudioApiKey = localStorage.getItem('toolStudioApiKey') || '';
 
 let activeJobId = null;
 let pollTimer = null;
 
 function apiUrl(path) {
-  return `${apiOrigin}${path}`;
+  return `${activeApiOrigin}${path}`;
+}
+
+function authHeaders(base = {}) {
+  const headers = { ...base };
+  if (toolStudioApiKey) {
+    headers['X-Tool-Studio-Key'] = toolStudioApiKey;
+  }
+  return headers;
+}
+
+async function apiFetch(path, options = {}) {
+  try {
+    return await fetch(apiUrl(path), options);
+  } catch (error) {
+    if (activeApiOrigin === PROD_API_ORIGIN) {
+      activeApiOrigin = BACKUP_API_ORIGIN;
+      return fetch(apiUrl(path), options);
+    }
+    throw error;
+  }
 }
 
 function setStatus(text, state = '') {
@@ -85,7 +130,10 @@ function setFormsDisabled(disabled) {
 
 async function pollJob(jobId) {
   try {
-    const response = await fetch(apiUrl(`/api/jobs/${jobId}`), { cache: 'no-store' });
+    const response = await apiFetch(`/api/jobs/${jobId}`, {
+      cache: 'no-store',
+      headers: authHeaders(),
+    });
     if (!response.ok) {
       throw new Error(`Job fetch failed (${response.status})`);
     }
@@ -121,9 +169,9 @@ async function startJob(tool, payload) {
   renderArtifacts('', []);
 
   try {
-    const response = await fetch(apiUrl(`/api/run/${tool}`), {
+    const response = await apiFetch(`/api/run/${tool}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: authHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(payload),
     });
 

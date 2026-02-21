@@ -38,6 +38,10 @@ Tool Studio exposes browser forms that run local CLI tools in the background and
 - Job status polling
 - Downloadable output artifacts (Markdown, DOCX, JSON)
 
+Tool Studio modes:
+- `demo` (default for public deployment): safe synthetic outputs for public demos
+- `live`: executes real local tool repos (requires env setup + API key)
+
 Currently wired tools:
 - `competitive-deep-dive`
 - `protocol-positioning`
@@ -103,6 +107,38 @@ For production hosting:
 - Run Tool Studio API behind a secure backend host
 - Add auth/rate limits before public exposure of execution endpoints
 - Configure CORS explicitly for production domains
+
+Tool Studio API production settings are environment-driven:
+- `TOOL_STUDIO_MODE=demo|live`
+- `TOOL_STUDIO_ALLOWED_ORIGINS=...`
+- `TOOL_STUDIO_API_KEY=...` (required in `live` mode)
+- `TOOL_STUDIO_MAX_RUNNING_JOBS`
+- `TOOL_STUDIO_RATE_POST_MAX`, `TOOL_STUDIO_RATE_GET_MAX`
+
+## Tool Studio API Deployment (Fly.io)
+
+Deployment files:
+- `Dockerfile`
+- `fly.toml`
+
+Deploy:
+```bash
+cd /Users/charubakchakrabarti/dev/portfolio
+flyctl apps create web3growthlab-api   # one-time
+flyctl deploy
+```
+
+Assign custom API domain:
+```bash
+flyctl certs add api.web3growthlab.com
+```
+
+Then add DNS at registrar:
+- `CNAME` record `api` -> `web3growthlab-api.fly.dev`
+
+Frontend auto-routes:
+- localhost: `https://localhost:8450` backend
+- production: `https://api.web3growthlab.com`
 
 ## Live Domain Deployment (web3growthlab.com)
 

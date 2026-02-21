@@ -297,6 +297,7 @@
 @media (max-width: 1180px) {
   .studio-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .studio-sidebar {
@@ -310,13 +311,74 @@
     padding-top: 124px;
   }
 
+  .studio-title {
+    font-size: clamp(38px, 12vw, 54px);
+  }
+
+  .studio-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
   .studio-sidebar,
   .studio-main,
   .studio-output {
     padding: 16px;
+    border-radius: 14px;
+  }
+
+  .tool-form input,
+  .tool-form textarea {
+    font-size: 16px;
+  }
+
+  .tool-form .btn {
+    min-height: 48px;
   }
 
   .terminal-log {
+    font-size: 11px;
     min-height: 260px;
+    max-height: 380px;
+    padding: 10px;
+  }
+
+  .artifact-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .artifact-download {
+    width: 100%;
+    text-align: center;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .studio-hero {
+    padding-top: 112px;
+    padding-bottom: 26px;
+  }
+
+  .studio-shell {
+    padding-bottom: 48px;
+  }
+
+  .panel-head h3 {
+    font-size: 21px;
+  }
+
+  .tool-tab {
+    padding: 11px;
+  }
+
+  .studio-note {
+    padding: 12px;
+  }
+
+  .terminal-log {
+    min-height: 220px;
+    max-height: 320px;
   }
 }
