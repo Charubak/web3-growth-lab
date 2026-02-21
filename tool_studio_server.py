@@ -54,7 +54,7 @@ def _env_int(name: str, default: int) -> int:
 HOST = os.getenv("TOOL_STUDIO_HOST", "0.0.0.0")
 PORT = _env_int("PORT", _env_int("TOOL_STUDIO_PORT", 8450))
 MODE = os.getenv("TOOL_STUDIO_MODE", "demo").strip().lower()
-USE_TLS = _env_bool("TOOL_STUDIO_TLS", default=False)
+USE_TLS = _env_bool("TOOL_STUDIO_TLS", default=(PORT == 8450))
 
 CERT = os.getenv("TOOL_STUDIO_CERT", "cert.pem")
 KEY = os.getenv("TOOL_STUDIO_KEY", "key.pem")
