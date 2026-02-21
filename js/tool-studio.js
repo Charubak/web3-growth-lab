@@ -135,11 +135,21 @@ async function pollJob(jobId) {
       headers: authHeaders(),
     });
     if (!response.ok) {
+      if ((response.status === 404 || response.status === 425) && jobId) {
+        // Some backends return accepted before the job row is queryable.
+        setStatus('Queued', 'is-running');
+        pollTimer = setTimeout(() => pollJob(jobId), 1250);
+        return;
+      }
       throw new Error(`Job fetch failed (${response.status})`);
     }
 
     const job = await response.json();
-    const logs = Array.isArray(job.logs) ? job.logs.join('\n') : '';
+    const logs = Array.isArray(job.logs)
+      ? job.logs.join('\n')
+      : typeof job.logs === 'string'
+        ? job.logs
+        : '';
     setLogText(logs);
     renderArtifacts(job.id, job.artifacts);
 
@@ -175,13 +185,31 @@ async function startJob(tool, payload) {
       body: JSON.stringify(payload),
     });
 
-    const data = await response.json().catch(() => ({}));
+    const responseText = await response.text();
+    let data = {};
+    if (responseText) {
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        data = {};
+      }
+    }
     if (!response.ok) {
       throw new Error(data.error || `Request failed (${response.status})`);
     }
 
-    activeJobId = data.job_id;
-    setStatus('Queued', 'is-running');
+    activeJobId = data.job_id || data.jobId || data.id || data?.job?.id || null;
+    if (!activeJobId) {
+      throw new Error(`Accepted but no job id returned (${response.status})`);
+    }
+
+    const accepted = response.status === 201 || response.status === 202;
+    setStatus(accepted ? 'Accepted' : 'Queued', 'is-running');
+    setLogText(
+      accepted
+        ? 'Request accepted. Waiting for worker...'
+        : 'Job queued. Waiting for worker...'
+    );
     pollJob(activeJobId);
   } catch (error) {
     setFormsDisabled(false);
