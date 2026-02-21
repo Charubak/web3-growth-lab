@@ -1,7 +1,8 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
 const lowCoreDevice = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
-const performanceMode = prefersReducedMotion || isCoarsePointer || lowCoreDevice;
+const forcePerformanceMode = true;
+const performanceMode = forcePerformanceMode || prefersReducedMotion || isCoarsePointer || lowCoreDevice;
 
 if (performanceMode) {
   document.body.classList.add('performance-mode');

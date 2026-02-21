@@ -103,9 +103,27 @@ body.performance-mode .hero__badge-dot {
   animation: none !important;
 }
 
+body.performance-mode .hero__bg::before,
+body.performance-mode .hero__bg::after {
+  display: none;
+}
+
 body.performance-mode [data-scroll-speed] {
   transform: none !important;
   will-change: auto;
+}
+
+body.performance-mode .marquee {
+  animation: none !important;
+  transform: none !important;
+}
+
+body.performance-mode .marquee__content[aria-hidden="true"] {
+  display: none;
+}
+
+body.performance-mode .story__sidebar {
+  position: static;
 }
 
 /* ═══════════════════════════════════════════════════════
