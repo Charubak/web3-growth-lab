@@ -9,6 +9,7 @@ if (performanceMode) {
 }
 
 const nav = document.getElementById('main-nav') || document.getElementById('nav');
+const alwaysSolidNav = /\/(resume|cover-letter|tool-studio)\.html$/i.test(window.location.pathname);
 
 /* ── Mobile nav (supports both nav variants) ─────────────────────────────── */
 const burger = document.getElementById('navBurger') || document.getElementById('navHamburger');
@@ -75,7 +76,11 @@ function updateScrollEffects() {
   const y = window.scrollY;
 
   if (nav) {
-    nav.classList.toggle('scrolled', y > 60);
+    if (alwaysSolidNav) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.toggle('scrolled', y > 60);
+    }
   }
 
   const pct = Math.min(100, Math.max(0, (y / scrollState.maxScroll) * 100));
