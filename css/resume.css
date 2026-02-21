@@ -1,8 +1,8 @@
 /* ── Resume / Cover Letter pages ─────────────────────────────────────────── */
 
 .cv-page {
-  padding-top: 116px;
-  padding-bottom: 80px;
+  padding-top: 92px;
+  padding-bottom: 52px;
   min-height: 100vh;
 }
 
@@ -17,22 +17,23 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 24px;
-  padding: 28px 0 30px;
+  gap: 16px;
+  padding: 12px 0 22px;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 34px;
+  margin-bottom: 24px;
 }
 .cv-header h1 {
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 900;
+  line-height: 1.02;
   letter-spacing: -2px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .cv-title {
   font-size: 16px;
   color: var(--accent-light);
   font-weight: 600;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .cv-contacts {
   display: flex;
@@ -51,8 +52,9 @@
 
 /* Sections */
 .cv-section {
-  padding: 0 !important;
-  margin-bottom: 40px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 28px;
 }
 .cv-section-title {
   font-size: 11px;
@@ -60,7 +62,7 @@
   text-transform: uppercase;
   letter-spacing: 2.5px;
   color: var(--accent-light);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
@@ -72,7 +74,7 @@
 .cv-section-intro {
   font-size: 14px;
   color: var(--text-muted);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   font-style: italic;
 }
 
@@ -170,7 +172,7 @@
 .cv-skills-grid {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 .cv-skill-row {
   display: grid;
@@ -196,8 +198,8 @@
 
 /* Jobs */
 .cv-job {
-  margin-bottom: 36px;
-  padding-bottom: 36px;
+  margin-bottom: 26px;
+  padding-bottom: 26px;
   border-bottom: 1px solid var(--border);
 }
 .cv-job:last-child { border-bottom: none; margin-bottom: 0; }
@@ -281,7 +283,7 @@
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  padding: 48px 0 0;
+  padding: 30px 0 0;
   border-top: 1px solid var(--border);
   margin-top: 8px;
 }
