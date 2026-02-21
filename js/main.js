@@ -1,12 +1,13 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+const lowCoreDevice = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+const performanceMode = prefersReducedMotion || isCoarsePointer || lowCoreDevice;
 
-/* ── Nav scroll (works on index + resume/cover pages) ───────────────────── */
-const nav = document.getElementById('main-nav') || document.getElementById('nav');
-if (nav) {
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+if (performanceMode) {
+  document.body.classList.add('performance-mode');
 }
+
+const nav = document.getElementById('main-nav') || document.getElementById('nav');
 
 /* ── Mobile nav (supports both nav variants) ─────────────────────────────── */
 const burger = document.getElementById('navBurger') || document.getElementById('navHamburger');
@@ -36,23 +37,82 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ── Scroll progress bar ─────────────────────────────────────────────────── */
+/* ── Unified scroll pipeline (nav + progress + parallax) ────────────────── */
 const pgBar = document.createElement('div');
 pgBar.style.cssText = [
   'position:fixed', 'top:0', 'left:0', 'height:2px', 'z-index:9999',
-  'background:var(--accent)', 'width:0%',
-  'transition:width .1s linear', 'pointer-events:none'
+  'background:var(--accent)', 'width:0%', 'pointer-events:none'
 ].join(';');
 document.body.appendChild(pgBar);
-window.addEventListener('scroll', () => {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+
+const parallaxItems = !performanceMode
+  ? Array.from(document.querySelectorAll('[data-scroll-speed]')).map(el => ({
+      el,
+      speed: parseFloat(el.getAttribute('data-scroll-speed')) || 0.08,
+      centerY: 0,
+    }))
+  : [];
+
+const scrollState = {
+  ticking: false,
+  vh: window.innerHeight,
+  maxScroll: Math.max(document.documentElement.scrollHeight - window.innerHeight, 1),
+};
+
+function recalcScrollMetrics() {
+  scrollState.vh = window.innerHeight;
+  scrollState.maxScroll = Math.max(document.documentElement.scrollHeight - scrollState.vh, 1);
+  if (!parallaxItems.length) return;
+  const y = window.scrollY;
+  parallaxItems.forEach(item => {
+    const rect = item.el.getBoundingClientRect();
+    item.centerY = rect.top + y + rect.height / 2;
+  });
+}
+
+function updateScrollEffects() {
+  const y = window.scrollY;
+
+  if (nav) {
+    nav.classList.toggle('scrolled', y > 60);
+  }
+
+  const pct = Math.min(100, Math.max(0, (y / scrollState.maxScroll) * 100));
   pgBar.style.width = `${pct}%`;
-}, { passive: true });
+
+  if (parallaxItems.length) {
+    const viewCenter = y + scrollState.vh * 0.5;
+    parallaxItems.forEach(item => {
+      const shift = (viewCenter - item.centerY) * item.speed;
+      item.el.style.setProperty('--scroll-shift', `${shift.toFixed(2)}px`);
+    });
+  }
+
+  scrollState.ticking = false;
+}
+
+function scheduleScrollEffects() {
+  if (scrollState.ticking) return;
+  scrollState.ticking = true;
+  requestAnimationFrame(updateScrollEffects);
+}
+
+window.addEventListener('scroll', scheduleScrollEffects, { passive: true });
+window.addEventListener('resize', () => {
+  recalcScrollMetrics();
+  scheduleScrollEffects();
+});
+window.addEventListener('orientationchange', () => {
+  recalcScrollMetrics();
+  scheduleScrollEffects();
+});
+
+recalcScrollMetrics();
+scheduleScrollEffects();
 
 /* ── Scroll reveal ───────────────────────────────────────────────────────── */
 const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
-if (prefersReducedMotion) {
+if (performanceMode) {
   revealEls.forEach(el => el.classList.add('visible'));
 } else {
   const revealObs = new IntersectionObserver(entries => {
@@ -66,31 +126,6 @@ if (prefersReducedMotion) {
     rootMargin: '0px 0px -40px 0px'
   });
   revealEls.forEach(el => revealObs.observe(el));
-}
-
-/* ── Scroll-linked parallax (new) ───────────────────────────────────────── */
-const parallaxEls = document.querySelectorAll('[data-scroll-speed]');
-if (!prefersReducedMotion && parallaxEls.length) {
-  let ticking = false;
-  const updateParallax = () => {
-    const vh = window.innerHeight;
-    parallaxEls.forEach(el => {
-      const speed = parseFloat(el.getAttribute('data-scroll-speed')) || 0.08;
-      const rect = el.getBoundingClientRect();
-      const centerDelta = (vh / 2) - (rect.top + rect.height / 2);
-      const shift = centerDelta * speed;
-      el.style.setProperty('--scroll-shift', `${shift.toFixed(2)}px`);
-    });
-    ticking = false;
-  };
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(updateParallax);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  updateParallax();
 }
 
 /* ── Hero stat counters ──────────────────────────────────────────────────── */
@@ -116,7 +151,7 @@ function animateCounter(el) {
 
 const statEls = document.querySelectorAll('.hero__stat-number[data-target]');
 if (statEls.length) {
-  if (prefersReducedMotion) {
+  if (performanceMode) {
     statEls.forEach(el => {
       const target = parseFloat(el.dataset.target);
       const suffix = el.dataset.suffix || '';

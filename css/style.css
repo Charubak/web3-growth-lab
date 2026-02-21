@@ -85,6 +85,29 @@ body::before {
   background-repeat: repeat; background-size: 256px 256px;
 }
 
+body.performance-mode::before {
+  display: none;
+}
+
+body.performance-mode .nav.scrolled,
+body.performance-mode #nav.scrolled,
+body.performance-mode .nav__mobile,
+body.performance-mode .nav-mobile {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.performance-mode .hero__bg::before,
+body.performance-mode .hero__bg::after,
+body.performance-mode .hero__badge-dot {
+  animation: none !important;
+}
+
+body.performance-mode [data-scroll-speed] {
+  transform: none !important;
+  will-change: auto;
+}
+
 /* ═══════════════════════════════════════════════════════
    LAYOUT
    ═══════════════════════════════════════════════════════ */
