@@ -6,6 +6,7 @@ This repo combines:
 - A storytelling-first portfolio website
 - Resume and cover letter pages
 - A live **Tool Studio** UI to run selected Web3 marketing AI tools directly from browser
+- The **AI Content Machine** — a full React app deployed as a subdirectory
 
 ## What Is Included
 
@@ -15,6 +16,7 @@ This repo combines:
 - `tool-studio.html`: Interactive UI for running tools from browser
 - `tool_studio_server.py`: HTTPS API + static server for Tool Studio execution
 - `serve.py`: HTTPS static server for main portfolio site
+- `content-machine/`: Built React app for the AI Content Machine (served at `/content-machine`)
 - `css/`: Site styles (`style.css`, `resume.css`, `tool-studio.css`)
 - `js/`: Frontend interactions (`main.js`, `tool-studio.js`)
 - `assets/`: Media assets (portrait, etc.)
@@ -45,6 +47,29 @@ Tool Studio modes:
 Currently wired tools:
 - `competitive-deep-dive`
 - `protocol-positioning`
+
+## AI Content Machine (`/content-machine`)
+
+A full React + FastAPI content engine deployed as a subdirectory of this site.
+
+- **Live URL:** https://web3growthlab.com/content-machine
+- **Backend API:** https://ai-content-machine-api.fly.dev (Fly.io)
+- **Source repo:** https://github.com/Charubak/ai-content-machine
+
+Features: voice calibration, 25-pattern AI quality gate, 4 platform variants per brief, narrative fast-path, review dashboard.
+
+The built React app (`content-machine/`) is generated from the source repo and committed here. To update it:
+
+```bash
+# In ai-content-machine repo
+cd frontend
+VITE_API_URL=https://ai-content-machine-api.fly.dev npm run build
+
+# Copy to this repo
+cp -R dist /path/to/web3-growth-lab/content-machine
+cd /path/to/web3-growth-lab
+git add content-machine/ && git commit -m "update: content machine build" && git push
+```
 
 Telegram-first tools can stay Telegram-native and be added to web controls later.
 
