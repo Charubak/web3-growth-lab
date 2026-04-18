@@ -1,131 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charubak Chakrabarti, Cover Letter</title>
-  <meta name="description" content="Cover letter of Charubak Chakrabarti, Web3 marketing leader with growth, GTM, and AI builder experience." />
-  <meta name="theme-color" content="#0a0a0a" />
-  <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Charubak Chakrabarti, Cover Letter" />
-  <meta property="og:description" content="Web3 marketing profile and leadership approach." />
-  <meta property="og:url" content="https://github.com/Charubak/portfolio" />
-  <meta name="twitter:card" content="summary" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='64' fill='%23e8793a'%3EC%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/resume.css" />
+<meta charset="utf-8">
+<title>~/cover-letter · charubak.cc</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c0a;--bg-2:#11140f;--bg-3:#171a14;--rule:#23281d;--rule-2:#2f3525;--ink:#e4e8d5;--ink-2:#b7bda2;--ink-3:#7d8468;--accent:#c4f542;--mono:"JetBrains Mono",monospace;--sans:"IBM Plex Sans",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.06;background-image:repeating-linear-gradient(0deg,rgba(196,245,66,.5) 0 1px,transparent 1px 3px)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:760px;margin:0 auto;padding:0 40px;position:relative;z-index:4}
+  .top{border-bottom:1px solid var(--rule);padding:14px 0;background:var(--bg-2);position:sticky;top:0;z-index:10;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .top .row{display:flex;justify-content:space-between;align-items:center}
+  .top a{color:var(--ink-2)}.top a:hover{color:var(--accent)}
+  .page{padding:48px 0 80px}
+  .doc{border:1px solid var(--rule-2);background:var(--bg-2)}
+  .doc .chrome{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--bg-3);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .doc .chrome .dots{display:flex;gap:6px}
+  .doc .chrome .dots i{width:8px;height:8px;border-radius:50%;background:#ff5f56}
+  .doc .chrome .dots i:nth-child(2){background:#ffbd2e}
+  .doc .chrome .dots i:nth-child(3){background:var(--accent)}
+  .doc .body{padding:40px 44px}
+  .doc .pre{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);margin-bottom:8px}
+  .doc h1{font-family:var(--mono);font-size:44px;letter-spacing:-.02em;line-height:1.05;color:var(--ink);font-weight:500;margin:6px 0 20px}
+  .doc h1 .hl{color:var(--accent)}
+  .doc .date{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);padding-bottom:20px;border-bottom:1px solid var(--rule);margin-bottom:24px}
+  .doc p{color:var(--ink-2);margin-bottom:20px}
+  .doc p strong{color:var(--accent);font-weight:500}
+  .doc p em{color:var(--ink);font-style:normal;border-bottom:1px dotted var(--accent)}
+  .doc .sal{color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.02em;margin-bottom:20px}
+  .doc blockquote{border-left:2px solid var(--accent);padding:4px 0 4px 20px;margin:24px 0;color:var(--ink);font-family:var(--mono);font-size:20px;line-height:1.4;letter-spacing:-.01em}
+  .sig{margin-top:40px;padding-top:24px;border-top:1px solid var(--rule)}
+  .sig .name{font-family:var(--mono);font-size:22px;color:var(--accent);font-weight:500}
+  .sig .ct{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);margin-top:10px;line-height:1.9}
+  .foot{padding:28px 0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px}
+  .foot a:hover{color:var(--accent)}
+  @media print{.top,.foot{display:none}body{background:#fff;color:#000}body::before{display:none}.doc{background:#fff;border-color:#ddd}}
+  @media (max-width:640px){.doc h1{font-size:32px}.doc .body{padding:28px 24px}}
+</style>
 </head>
-<body>
+<body data-screen-label="03 Cover Letter — Terminal">
 
-  <nav id="nav" class="scrolled">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">CC</a>
-      <ul class="nav-links">
-        <li><a href="index.html#story">About</a></li>
-        <li><a href="index.html#tools">Projects</a></li>
-        <li><a href="resume.html">CV</a></li>
-        <li><a href="cover-letter.html" class="active">Cover Letter</a></li>
-      </ul>
-      <a href="downloads/Charubak_Chakrabarti_CoverLetter.pdf" download class="btn btn-ghost btn-sm">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
-      </a>
-      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+<div class="top">
+  <div class="wrap row">
+    <a href="index.html">← /home</a>
+    <span>~/cover-letter.md</span>
+    <a href="#" onclick="window.print();return false">./print →</a>
+  </div>
+</div>
+
+<main class="page wrap">
+  <article class="doc">
+    <div class="chrome">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <span>charubak@web3 ~ vim cover-letter.md</span>
+      <span style="color:var(--accent)">modified · 2 min</span>
     </div>
-    <div class="nav-mobile" id="navMobile">
-      <a href="index.html" class="nav-mobile-link">Back to Portfolio</a>
-      <a href="resume.html" class="nav-mobile-link">CV</a>
-      <a href="cover-letter.html" class="nav-mobile-link">Cover Letter</a>
-    </div>
-  </nav>
+    <div class="body">
+      <div class="pre"># cover-letter.md</div>
+      <h1>## on why i'd be a <span class="hl">good hire.</span></h1>
+      <div class="date">dubai · april 2026 · --open-application</div>
 
-  <main class="cv-page">
-    <div class="cv-container">
+      <p class="sal">&gt; Dear founder, hiring manager, or curious recruiter —</p>
 
-      <header class="cv-header reveal">
-        <div class="cv-header-text">
-          <h1>Cover Letter</h1>
-          <p class="cv-title">Charubak Chakrabarti, Web3 Marketing Lead</p>
-          <div class="cv-contacts">
-            <a href="mailto:charubak.chakrabarti@gmail.com">charubak.chakrabarti@gmail.com</a>
-            <span class="cv-sep">·</span>
-            <a href="https://x.com/thedeludedbull" target="_blank" rel="noopener noreferrer">@thedeludedbull</a>
-            <span class="cv-sep">·</span>
-            <a href="https://linkedin.com/in/charubak-chakrabarti" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
+      <p>Most marketers optimise a funnel. A few build the system that decides which funnels are worth building in the first place. That's the game I play.</p>
+
+      <p>I've spent the last five years running growth for <strong>L1 blockchains, perpetual DEXs, prediction markets, and DeFi protocols</strong>. At Autonity I launched the Forecastathon and onboarded 2,500+ quant traders. At RFX I drove 70,000+ signups for a zkSync perp DEX alpha and stood up a 30+ KOL program. At Relative I built an 18,000-member community from zero. At Mozaic I led a four-person marketing team.</p>
+
+      <p>The numbers matter, but the pattern behind them matters more: I find narratives before they're obvious, turn them into positioning nobody else owns, and ship the campaigns and partnerships that compound.</p>
+
+      <blockquote>// I don't just run campaigns — I build the intelligence systems that tell me <span style="color:var(--accent)">which</span> campaigns to run.</blockquote>
+
+      <p>In the last year I've been turning that approach into code. I've shipped <strong>six AI-powered tools</strong> — a competitor move monitor, a narrative hijacking bot, a positioning matrix generator, a competitive deep-dive engine, an open-source Web3 job bot, and a full content-generation engine with a 25-pattern humanizer. All Python and React, all live, all replacing hours of manual work per week. This is what I do when I'm <em>not</em> doing marketing. I build things that make marketing smarter.</p>
+
+      <p>Here's what that means for you: you get a <strong>marketing lead who can also sit next to your founders and engineers</strong>. Someone who understands why a perp DEX ships spot trading next, why an L1 needs a settlement-layer narrative, why a prediction market is a funnel for quant traders and not a casino. Someone who will ship a tool by Friday when the intel you need doesn't exist yet.</p>
+
+      <p>I'm looking for a <strong>Marketing Lead or Head of Marketing</strong> role at a high-growth Web3 company — remote, Dubai, or Singapore. I'm most useful in places where the ground is still shifting, the narrative isn't set, and the team is small enough that marketing has to own outcomes, not decks.</p>
+
+      <p>If that sounds like you, let's talk.</p>
+
+      <div class="sig">
+        <div class="name">— charubak.</div>
+        <div class="ct">
+          <div>charubak.chakrabarti@gmail.com</div>
+          <div>𝕏 @thedeludedbull · linkedin/charubak-chakrabarti · github/Charubak</div>
+          <div>web3growthlab.com</div>
         </div>
-        <a href="downloads/Charubak_Chakrabarti_CoverLetter.pdf" download class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
-        </a>
-      </header>
-
-      <section class="cv-section reveal">
-        <div class="cl-body">
-          <p class="cl-salutation">Dear Hiring Manager,</p>
-
-          <p>
-            I am a blockchain growth and marketing leader with 5+ years in Web3 and 10+ years in marketing overall, spanning L1 infrastructure, perpetual DEXs, and prediction markets. At Autonity, I launched and scaled the Forecastathon, a global prediction market and trading competition that onboarded 2,500+ quant traders, data scientists, and algorithmic traders across four seasons.
-          </p>
-
-          <p>
-            My approach combines data, experimentation, and execution speed. I built analytics infrastructure with Grafana, Plausible, and Timescale to monitor funnel performance end-to-end, then used those insights to improve onboarding and increase daily signups 10x through Web3Auth and conversion-focused flow changes. I also built AI-assisted workflows for competitive monitoring, partnership intelligence, and faster campaign execution.
-          </p>
-
-          <p>
-            I lead content and distribution end-to-end across X, Discord, Telegram, and Medium, and regularly translate technical product narratives into messages that drive acquisition and retention. I manage KOL and ecosystem partnerships from sourcing and negotiation through performance tracking. I have authored long-form thought leadership on Medium covering prediction markets, quant finance, and building with AI.
-          </p>
-
-          <p>
-            Beyond marketing execution, I build. Over the past year I shipped 5 AI-powered tools: a competitor move monitor that fires Telegram alerts for significant competitor actions, a narrative hijacking monitor that scores news for campaign opportunities in real time, a competitive deep-dive tool that generates 12-section intelligence reports from live on-chain and social data, a protocol positioning matrix, and an open-source Web3 job bot. These tools reflect how I think about the role of marketing in 2026: faster intelligence, tighter feedback loops, and execution that scales.
-          </p>
-
-          <p>
-            I am currently looking for Marketing Lead or Head of Marketing roles at high-growth blockchain companies where I can own GTM, growth, and brand execution, and contribute measurable business outcomes in a fast-moving crypto environment. Remote, Dubai, or Singapore preferred.
-          </p>
-
-          <p>
-            Thank you for your time and consideration. I would welcome the opportunity to discuss how I can contribute to your team.
-          </p>
-
-          <div class="cl-sign">
-            <p>Best,</p>
-            <p class="cl-name">Charubak Chakrabarti</p>
-            <div class="cl-sign-links">
-              <a href="mailto:charubak.chakrabarti@gmail.com">charubak.chakrabarti@gmail.com</a>
-              <a href="https://github.com/Charubak" target="_blank" rel="noopener noreferrer">github.com/Charubak</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="cv-footer-cta reveal">
-        <a href="downloads/Charubak_Chakrabarti_CoverLetter.pdf" download class="btn btn-primary btn-lg">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Cover Letter (PDF)
-        </a>
-        <a href="resume.html" class="btn btn-ghost btn-lg">View Full CV</a>
-      </div>
-
-    </div>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>Charubak Chakrabarti · 2026</span>
-      <div class="footer-links">
-        <a href="index.html">Portfolio</a>
-        <a href="resume.html">CV</a>
-        <a href="mailto:charubak.chakrabarti@gmail.com">Email</a>
       </div>
     </div>
-  </footer>
+  </article>
+</main>
 
-  <script src="js/main.js"></script>
+<div class="foot wrap">
+  <div>© 2026 charubak.cc</div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html">/home</a>
+    <a href="resume.html">/cv</a>
+    <a href="tool-studio.html">/studio</a>
+  </div>
+</div>
+
 </body>
 </html>
