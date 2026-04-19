@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <title>~/studio · charubak.cc</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Live tool studio — run Charubak's AI marketing tools in your browser. Competitive deep-dives, narrative hijacking scores, protocol positioning matrices.">
+<meta property="og:title" content="Tool Studio · charubak.cc">
+<meta property="og:description" content="Run four AI marketing intelligence tools live in your browser.">
+<meta property="og:url" content="https://charubak.github.io/web3-growth-lab/tool-studio.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@thedeludedbull">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#0a0c0a;--bg-2:#11140f;--bg-3:#171a14;--rule:#23281d;--rule-2:#2f3525;--ink:#e4e8d5;--ink-2:#b7bda2;--ink-3:#7d8468;--accent:#c4f542;--accent-2:#ff6a3d;--mono:"JetBrains Mono",monospace;--sans:"IBM Plex Sans",sans-serif}
@@ -20,6 +27,18 @@
   .head h1 .hl{color:var(--accent)}
   .head .lead{color:var(--ink-2);font-size:14px;font-family:var(--sans);max-width:720px;line-height:1.7}
   .head .pre{color:var(--accent);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+
+  /* API key bar */
+  .key-bar{background:var(--bg-2);border:1px solid var(--rule-2);padding:14px 20px;margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .key-bar label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+  .key-bar input{flex:1;min-width:240px;padding:10px 14px;border:1px solid var(--rule-2);background:var(--bg-3);color:var(--ink);font-family:var(--mono);font-size:12px;outline:none;transition:border .2s}
+  .key-bar input:focus{border-color:var(--accent)}
+  .key-bar .hint{font-size:10px;color:var(--ink-3);line-height:1.5}
+  .key-bar .hint a{color:var(--accent);border-bottom:1px dotted var(--accent)}
+  .key-bar .status{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+  .key-bar .status.ok{color:var(--accent)}
+  .key-bar .status.err{color:var(--accent-2)}
+
   .studio{display:grid;grid-template-columns:280px 1fr;border:1px solid var(--rule-2);background:var(--bg-2);min-height:640px}
   .sidebar{border-right:1px solid var(--rule);background:var(--bg-3)}
   .sidebar h4{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);padding:18px 20px 8px}
@@ -31,6 +50,9 @@
   .tool-btn .t{font-size:14px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
   .tool-btn .t span{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:5px;font-weight:400}
   .tool-btn.active .t span{color:rgba(10,12,10,.7)}
+  .sidebar .readme{padding:18px 20px;font-size:11px;color:var(--ink-3);line-height:1.7;border-top:1px solid var(--rule)}
+  .sidebar .readme .rt{color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+  .sidebar .readme a{color:var(--accent);border-bottom:1px dotted var(--accent)}
   .stage{padding:24px 28px}
   .stage .bar{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--rule);margin-bottom:20px;flex-wrap:wrap;gap:10px}
   .stage .title{font-size:22px;color:var(--ink);font-weight:500;letter-spacing:-.015em}
@@ -56,7 +78,8 @@
   .cursor{display:inline-block;width:8px;height:13px;background:var(--accent);vertical-align:middle;margin-left:2px;animation:blink 1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
   .foot{padding:28px 0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;margin-top:32px;border-top:1px solid var(--rule)}
-  @media (max-width:900px){.studio{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--rule)}}
+  .foot a:hover{color:var(--accent)}
+  @media (max-width:900px){.studio{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--rule)}.controls{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-screen-label="04 Studio — Terminal">
@@ -72,30 +95,39 @@
 <header class="head wrap">
   <div class="pre">▰ live-sandbox · run-any-tool</div>
   <h1>// the live <span class="hl">studio</span>.</h1>
-  <p class="lead">Four of the six tools, wired up to run in your browser. Pick one on the left, drop in an input, hit run. The real ones ship to Telegram or your shell — these are the short-form demo versions.</p>
+  <p class="lead">Four of the six tools, wired up to run in your browser. Pick one on the left, drop in an input, hit run. Paste your Claude API key below to activate — it stays in memory only, never stored.</p>
 </header>
 
 <section class="wrap" style="padding-bottom:40px">
-<div class="studio">
-  <aside class="sidebar">
-    <h4>select.tool</h4>
-    <button class="tool-btn active" data-tool="deep-dive"><span class="num">03/</span><span class="t">competitive-deep-dive<span>12-section reports</span></span></button>
-    <button class="tool-btn" data-tool="positioning"><span class="num">04/</span><span class="t">protocol-positioning<span>matrix + narrative</span></span></button>
-    <button class="tool-btn" data-tool="hijack"><span class="num">02/</span><span class="t">narrative-hijack<span>score + drafts</span></span></button>
-    <button class="tool-btn" data-tool="monitor"><span class="num">01/</span><span class="t">competitor-monitor<span>alerts + analysis</span></span></button>
-    <div style="padding:18px 20px;font-size:11px;color:var(--ink-3);line-height:1.7;border-top:1px solid var(--rule)">
-      <div style="color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px">README</div>
-      <div>Demos on Claude Haiku. Real tools use your keys. Source on <span style="color:var(--accent)">github/Charubak</span>.</div>
-    </div>
-  </aside>
-  <div class="stage">
-    <div class="bar">
-      <div class="title" id="stageTitle">competitive-deep-dive</div>
-      <div class="meta" id="stageMeta">python · claude · defillama · coingecko</div>
-    </div>
-    <div id="toolUI"></div>
+
+  <!-- API Key bar -->
+  <div class="key-bar">
+    <label>claude api key</label>
+    <input type="password" id="apiKey" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false">
+    <div class="hint">Get a free key at <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> · Key is never sent anywhere except Anthropic's API · Not stored</div>
+    <span class="status" id="keyStatus">● no key</span>
   </div>
-</div>
+
+  <div class="studio">
+    <aside class="sidebar">
+      <h4>select.tool</h4>
+      <button class="tool-btn active" data-tool="deep-dive"><span class="num">03/</span><span class="t">competitive-deep-dive<span>12-section reports</span></span></button>
+      <button class="tool-btn" data-tool="positioning"><span class="num">04/</span><span class="t">protocol-positioning<span>matrix + narrative</span></span></button>
+      <button class="tool-btn" data-tool="hijack"><span class="num">02/</span><span class="t">narrative-hijack<span>score + drafts</span></span></button>
+      <button class="tool-btn" data-tool="monitor"><span class="num">01/</span><span class="t">competitor-monitor<span>alerts + analysis</span></span></button>
+      <div class="readme">
+        <div class="rt">README</div>
+        <div>Demos run on Claude Haiku via the Anthropic API. Real tools use your own keys and run locally. Source on <a href="https://github.com/Charubak" target="_blank" rel="noopener">github/Charubak</a>.</div>
+      </div>
+    </aside>
+    <div class="stage">
+      <div class="bar">
+        <div class="title" id="stageTitle">competitive-deep-dive</div>
+        <div class="meta" id="stageMeta">python · claude · defillama · coingecko</div>
+      </div>
+      <div id="toolUI"></div>
+    </div>
+  </div>
 </section>
 
 <div class="foot wrap">
@@ -108,6 +140,53 @@
 </div>
 
 <script>
+// ---- API key handling ----
+const apiKeyInput = document.getElementById('apiKey');
+const keyStatus = document.getElementById('keyStatus');
+let claudeKey = '';
+
+apiKeyInput.addEventListener('input', () => {
+  claudeKey = apiKeyInput.value.trim();
+  if (claudeKey.startsWith('sk-ant-')) {
+    keyStatus.textContent = '● key set';
+    keyStatus.className = 'status ok';
+  } else if (claudeKey.length > 0) {
+    keyStatus.textContent = '● invalid format';
+    keyStatus.className = 'status err';
+  } else {
+    keyStatus.textContent = '● no key';
+    keyStatus.className = 'status';
+  }
+});
+
+// ---- Claude API call ----
+async function callClaude(prompt) {
+  if (!claudeKey || !claudeKey.startsWith('sk-ant-')) {
+    throw new Error('No API key — paste your Claude key above to activate the demo.');
+  }
+  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': claudeKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 1024,
+      messages: [{ role: 'user', content: prompt }]
+    })
+  });
+  if (!resp.ok) {
+    const err = await resp.json().catch(() => ({}));
+    throw new Error(err.error?.message || `API error ${resp.status}`);
+  }
+  const data = await resp.json();
+  return data.content[0].text;
+}
+
+// ---- Tool definitions ----
 const TOOLS = {
   "deep-dive":{
     title:"competitive-deep-dive",
@@ -115,7 +194,7 @@ const TOOLS = {
     presets:["Hyperliquid","Aave v4","EigenLayer","Ethena","Polymarket"],
     label:"project.name",
     placeholder:"e.g. Hyperliquid",
-    run: async v => await window.claude.complete(`You are a Web3 competitive-intelligence analyst. For the Web3 project "${v}", produce a short 12-section deep-dive with UPPERCASE headers: 1) CATEGORY, 2) CORE THESIS, 3) TVL / TRACTION, 4) COMPETITIVE SET, 5) NARRATIVE GAPS, 6) WHERE THEY WIN, 7) WHERE THEY ARE WEAK, 8) GO-TO-MARKET PATTERN, 9) TOKEN DESIGN, 10) STRATEGIC RISK, 11) NARRATIVE ANGLE FOR A CHALLENGER, 12) RECOMMENDATION. 1-2 sentences each. Crisp analyst tone, no fluff.`)
+    run: async v => await callClaude(`You are a Web3 competitive-intelligence analyst. For the Web3 project "${v}", produce a short 12-section deep-dive with UPPERCASE headers: 1) CATEGORY, 2) CORE THESIS, 3) TVL / TRACTION, 4) COMPETITIVE SET, 5) NARRATIVE GAPS, 6) WHERE THEY WIN, 7) WHERE THEY ARE WEAK, 8) GO-TO-MARKET PATTERN, 9) TOKEN DESIGN, 10) STRATEGIC RISK, 11) NARRATIVE ANGLE FOR A CHALLENGER, 12) RECOMMENDATION. 1-2 sentences each. Crisp analyst tone, no fluff.`)
   },
   "positioning":{
     title:"protocol-positioning",
@@ -123,7 +202,7 @@ const TOOLS = {
     presets:["Aave","Morpho","Spark","Curve","Pendle"],
     label:"defi.protocol",
     placeholder:"e.g. Morpho",
-    run: async v => await window.claude.complete(`For "${v}", generate a brief positioning report. Use UPPERCASE headers:\n\nPOSITIONING MATRIX — 2 axes, 4 quadrants, where ${v} sits and where 3 main competitors sit.\nNARRATIVE ANGLE — one sentence challenger positioning.\nTHREE MESSAGING PILLARS — listed.\nNEXT TWEET — one crisp tweet-ready example.\n\nPunchy, no fluff.`)
+    run: async v => await callClaude(`For "${v}", generate a brief positioning report. Use UPPERCASE headers:\n\nPOSITIONING MATRIX — 2 axes, 4 quadrants, where ${v} sits and where 3 main competitors sit.\nNARRATIVE ANGLE — one sentence challenger positioning.\nTHREE MESSAGING PILLARS — listed.\nNEXT TWEET — one crisp tweet-ready example.\n\nPunchy, no fluff.`)
   },
   "hijack":{
     title:"narrative-hijack",
@@ -131,7 +210,7 @@ const TOOLS = {
     presets:["Fed pivot to rate cuts","Stablecoin law passes","L1 outage trending","Major exchange hack","AI + crypto merger"],
     label:"news.event",
     placeholder:"e.g. Fed pivot to rate cuts",
-    run: async v => await window.claude.complete(`News event: "${v}". Produce:\n\nSCORE — 1–10 hijackability + 1-line reason.\nURGENCY — high/med/low + time window.\nTWEET — ready to post, under 260 chars.\nTHREAD — 4 numbered beats.\nLINKEDIN — short draft, 5 lines max.\n\nPoster is a Web3 marketer known for data-driven takes. Punchy, no emoji.`)
+    run: async v => await callClaude(`News event: "${v}". Produce:\n\nSCORE — 1–10 hijackability + 1-line reason.\nURGENCY — high/med/low + time window.\nTWEET — ready to post, under 260 chars.\nTHREAD — 4 numbered beats.\nLINKEDIN — short draft, 5 lines max.\n\nPoster is a Web3 marketer known for data-driven takes. Punchy, no emoji.`)
   },
   "monitor":{
     title:"competitor-monitor",
@@ -139,7 +218,7 @@ const TOOLS = {
     presets:["GMX ships v3","dYdX launches perps on Solana","Polymarket adds sports","Jupiter acquires a DEX","Aave adds BTC collateral"],
     label:"competitor.move",
     placeholder:"e.g. GMX ships v3",
-    run: async v => await window.claude.complete(`Competitor move: "${v}". Alert structure with UPPERCASE headers:\n\nALERT — 1-line summary.\nCATEGORY — product launch / partnership / funding / chain integration / narrative.\nSIGNAL SCORE — 1–10 + half-line reason.\nWHAT THIS MEANS FOR YOU — 3 sentences; reader is a perp-DEX-adjacent marketing lead.\nRECOMMENDED ACTION — 1 crisp next-step.\n\nTerse analyst tone.`)
+    run: async v => await callClaude(`Competitor move: "${v}". Alert structure with UPPERCASE headers:\n\nALERT — 1-line summary.\nCATEGORY — product launch / partnership / funding / chain integration / narrative.\nSIGNAL SCORE — 1–10 + half-line reason.\nWHAT THIS MEANS FOR YOU — 3 sentences; reader is a perp-DEX-adjacent marketing lead.\nRECOMMENDED ACTION — 1 crisp next-step.\n\nTerse analyst tone.`)
   },
 };
 
@@ -157,7 +236,7 @@ function renderTool(key){
       <div class="field"><label>${t.label}</label><input id="inp" type="text" placeholder="${t.placeholder}" value="${t.presets[0]}"></div>
       <button class="run" id="run">./run →</button>
     </div>
-    <div class="output" id="out"><span class="muted">// output appears here. hit ./run.</span><span class="cursor"></span></div>
+    <div class="output" id="out"><span class="muted">// output appears here · paste your API key above then hit ./run</span><span class="cursor"></span></div>
   `;
   const presets = document.getElementById('presets');
   t.presets.forEach(p => {
@@ -171,16 +250,18 @@ function renderTool(key){
     if(!v) return;
     const btn = document.getElementById('run'); btn.disabled=true; btn.textContent='running…';
     const out = document.getElementById('out');
-    out.innerHTML = `<span class="p">$</span> ./run ${key} "${v}"\n<span class="muted">▸ loading model · fetching live data · scoring…</span><span class="cursor"></span>`;
+    out.innerHTML = `<span class="p">$</span> ./run ${key} "${v}"\n<span class="muted">▸ calling claude · ${t.meta} · processing…</span><span class="cursor"></span>`;
+    const t0 = Date.now();
     try{
       const text = await t.run(v);
+      const elapsed = ((Date.now()-t0)/1000).toFixed(1);
       const html = text
-        .replace(/</g,'&lt;')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
         .replace(/^([A-Z][A-Z0-9 &\/()\-]{2,})\s*$/gm,'<span class="h">$1</span>')
-        .replace(/^([0-9]+\))/gm,'<span class="p">$1</span>');
-      out.innerHTML = `<span class="p">$</span> ./run ${key} "${v}"\n<span class="ok">✓ done · ${text.length} chars · ${Math.floor(Math.random()*800+400)}ms</span>\n\n`+html+'<span class="cursor"></span>';
+        .replace(/^([0-9]+[\).])/gm,'<span class="p">$1</span>');
+      out.innerHTML = `<span class="p">$</span> ./run ${key} "${v}"\n<span class="ok">✓ done · ${text.length} chars · ${elapsed}s</span>\n\n`+html+'<span class="cursor"></span>';
     }catch(e){
-      out.innerHTML = `<span class="warn">! error: ${e.message}</span>`;
+      out.innerHTML = `<span class="p">$</span> ./run ${key} "${v}"\n<span class="warn">! error: ${e.message}</span>\n\n<span class="muted">// Make sure your API key is set above and starts with sk-ant-</span>`;
     }
     btn.disabled=false; btn.textContent='./run →';
   };
