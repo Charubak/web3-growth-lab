@@ -115,6 +115,7 @@
       <button class="tool-btn" data-tool="positioning"><span class="num">04/</span><span class="t">protocol-positioning<span>matrix + narrative</span></span></button>
       <button class="tool-btn" data-tool="hijack"><span class="num">02/</span><span class="t">narrative-hijack<span>score + drafts</span></span></button>
       <button class="tool-btn" data-tool="monitor"><span class="num">01/</span><span class="t">competitor-monitor<span>alerts + analysis</span></span></button>
+      <button class="tool-btn" data-tool="ad-machine"><span class="num">05/</span><span class="t">ad-creative-machine<span>copy + visuals pipeline</span></span></button>
       <div class="readme">
         <div class="rt">README</div>
         <div>Demos run on Claude Haiku via the Anthropic API. Real tools use your own keys and run locally. Source on <a href="https://github.com/Charubak" target="_blank" rel="noopener">github/Charubak</a>.</div>
@@ -220,6 +221,14 @@ const TOOLS = {
     placeholder:"e.g. GMX ships v3",
     run: async v => await callClaude(`Competitor move: "${v}". Alert structure with UPPERCASE headers:\n\nALERT — 1-line summary.\nCATEGORY — product launch / partnership / funding / chain integration / narrative.\nSIGNAL SCORE — 1–10 + half-line reason.\nWHAT THIS MEANS FOR YOU — 3 sentences; reader is a perp-DEX-adjacent marketing lead.\nRECOMMENDED ACTION — 1 crisp next-step.\n\nTerse analyst tone.`)
   },
+  "ad-machine":{
+    title:"ad-creative-machine",
+    meta:"fastapi · claude opus + sonnet · gemini 2.5 flash · react",
+    launch: true,
+    url: "http://localhost:5173",
+    description: "Multi-model pipeline — Opus 4.7 writes a strategic brief, Sonnet 4.6 generates 5 copy variations per platform, Gemini 2.5 Flash Image renders platform-sized visuals. Export ZIP, Google RSA CSV, or push via Buffer.",
+    features:["X / LinkedIn / Meta / Google RSA","Compliance linting + slop scoring","Performance CSV → Round 2 iteration","Asset pairings + export bundle"],
+  },
 };
 
 const stageTitle = document.getElementById('stageTitle');
@@ -230,6 +239,19 @@ function renderTool(key){
   const t = TOOLS[key];
   stageTitle.textContent = t.title;
   stageMeta.textContent = t.meta;
+  if(t.launch){
+    toolUI.innerHTML = `
+      <div style="padding:8px 0 24px">
+        <p style="color:var(--ink-2);font-family:var(--sans);font-size:14px;line-height:1.7;max-width:600px;margin-bottom:20px">${t.description}</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:28px">
+          ${t.features.map(f=>`<li style="font-size:11px;letter-spacing:.1em;color:var(--ink-3)"><span style="color:var(--accent);margin-right:8px">▸</span>${f}</li>`).join('')}
+        </ul>
+        <a href="${t.url}" target="_blank" rel="noopener" style="display:inline-block;padding:12px 24px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">./launch → ad-creative-machine</a>
+        <p style="margin-top:12px;font-size:10px;color:var(--ink-3)">// standalone app · requires local backend on :8000 · see github.com/Charubak/ad-creative-machine</p>
+      </div>
+    `;
+    return;
+  }
   toolUI.innerHTML = `
     <div class="presets" id="presets"></div>
     <div class="controls">
