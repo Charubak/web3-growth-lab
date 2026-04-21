@@ -95,7 +95,7 @@
 <header class="head wrap">
   <div class="pre">▰ live-sandbox · run-any-tool</div>
   <h1>// the live <span class="hl">studio</span>.</h1>
-  <p class="lead">Four of the six tools, wired up to run in your browser. Pick one on the left, drop in an input, hit run. Paste your Claude API key below to activate — it stays in memory only, never stored.</p>
+  <p class="lead">Six tools, live in your browser. The two pipeline tools (ad creatives + content engine) open as standalone apps. The four intelligence tools run directly here — drop in an input, hit run. Paste your Claude API key below to activate.</p>
 </header>
 
 <section class="wrap" style="padding-bottom:40px">
@@ -111,11 +111,12 @@
   <div class="studio">
     <aside class="sidebar">
       <h4>select.tool</h4>
-      <button class="tool-btn active" data-tool="deep-dive"><span class="num">03/</span><span class="t">competitive-deep-dive<span>12-section reports</span></span></button>
+      <button class="tool-btn active" data-tool="ad-machine"><span class="num">06/</span><span class="t">ad-creative-machine<span>copy + visuals pipeline</span></span></button>
+      <button class="tool-btn" data-tool="content-machine"><span class="num">05/</span><span class="t">ai-content-engine<span>humanized content at scale</span></span></button>
+      <button class="tool-btn" data-tool="deep-dive"><span class="num">03/</span><span class="t">competitive-deep-dive<span>12-section reports</span></span></button>
       <button class="tool-btn" data-tool="positioning"><span class="num">04/</span><span class="t">protocol-positioning<span>matrix + narrative</span></span></button>
       <button class="tool-btn" data-tool="hijack"><span class="num">02/</span><span class="t">narrative-hijack<span>score + drafts</span></span></button>
       <button class="tool-btn" data-tool="monitor"><span class="num">01/</span><span class="t">competitor-monitor<span>alerts + analysis</span></span></button>
-      <button class="tool-btn" data-tool="ad-machine"><span class="num">05/</span><span class="t">ad-creative-machine<span>copy + visuals pipeline</span></span></button>
       <div class="readme">
         <div class="rt">README</div>
         <div>Demos run on Claude Haiku via the Anthropic API. Real tools use your own keys and run locally. Source on <a href="https://github.com/Charubak" target="_blank" rel="noopener">github/Charubak</a>.</div>
@@ -225,9 +226,19 @@ const TOOLS = {
     title:"ad-creative-machine",
     meta:"fastapi · claude opus + sonnet · gemini 2.5 flash · react",
     launch: true,
-    url: "http://localhost:5173",
+    url: "ad-machine/",
     description: "Multi-model pipeline — Opus 4.7 writes a strategic brief, Sonnet 4.6 generates 5 copy variations per platform, Gemini 2.5 Flash Image renders platform-sized visuals. Export ZIP, Google RSA CSV, or push via Buffer.",
     features:["X / LinkedIn / Meta / Google RSA","Compliance linting + slop scoring","Performance CSV → Round 2 iteration","Asset pairings + export bundle"],
+    note:"// requires ad-machine backend running on localhost:8001",
+  },
+  "content-machine":{
+    title:"ai-content-engine",
+    meta:"claude sonnet · voice calibration · quality gate · react",
+    launch: true,
+    url: "content-machine/",
+    description: "AI content engine with company voice calibration, anti-slop quality gate, and humanizer. Generates long-form posts, threads, and newsletters that sound like you — not ChatGPT.",
+    features:["Voice profile calibration from samples","Slop scoring + rewrite loop","Multi-format: threads, posts, newsletters","Research Mode with live web search"],
+    note:"// fully deployed · no backend required",
   },
 };
 
@@ -246,8 +257,8 @@ function renderTool(key){
         <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:28px">
           ${t.features.map(f=>`<li style="font-size:11px;letter-spacing:.1em;color:var(--ink-3)"><span style="color:var(--accent);margin-right:8px">▸</span>${f}</li>`).join('')}
         </ul>
-        <a href="${t.url}" target="_blank" rel="noopener" style="display:inline-block;padding:12px 24px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">./launch → ad-creative-machine</a>
-        <p style="margin-top:12px;font-size:10px;color:var(--ink-3)">// standalone app · requires local backend on :8000 · see github.com/Charubak/ad-creative-machine</p>
+        <a href="${t.url}" target="_blank" rel="noopener" style="display:inline-block;padding:12px 24px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">./launch → ${t.title}</a>
+        ${t.note ? `<p style="margin-top:12px;font-size:10px;color:var(--ink-3)">${t.note}</p>` : ''}
       </div>
     `;
     return;
@@ -296,7 +307,7 @@ document.querySelectorAll('.tool-btn').forEach(b => {
     renderTool(b.dataset.tool);
   };
 });
-renderTool('deep-dive');
+renderTool('ad-machine');
 </script>
 </body>
 </html>
