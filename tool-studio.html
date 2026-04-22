@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Tool Studio · AI Marketing Tools by Charubak Chakrabarti</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Live tool studio — run Charubak's AI marketing tools in your browser. Competitive deep-dives, narrative hijacking scores, protocol positioning matrices.">
+<meta name="description" content="Live tool studio to run Charubak's AI marketing tools in your browser. Competitive deep-dives, narrative hijacking scores, and protocol positioning matrices.">
 <link rel="canonical" href="https://web3growthlab.com/tool-studio.html">
 <meta property="og:title" content="Tool Studio · AI Marketing Tools by Charubak Chakrabarti">
 <meta property="og:description" content="Run four AI marketing intelligence tools live in your browser.">
@@ -84,7 +84,7 @@
   @media (max-width:900px){.studio{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--rule)}.controls{grid-template-columns:1fr}}
 </style>
 </head>
-<body data-screen-label="04 Studio — Terminal">
+<body data-screen-label="04 Studio - Terminal">
 
 <div class="top">
   <div class="wrap row">
@@ -97,7 +97,7 @@
 <header class="head wrap">
   <div class="pre">▰ live-sandbox · run-any-tool</div>
   <h1>// the live <span class="hl">studio</span>.</h1>
-  <p class="lead">Six tools, live in your browser. The two pipeline tools (ad creatives + content engine) open as standalone apps. The four intelligence tools run directly here — drop in an input, hit run. Paste your Claude API key below to activate.</p>
+  <p class="lead">Six tools, live in your browser. The two pipeline tools, ad creatives and content engine, open as standalone apps. The four intelligence tools run directly here. Drop in an input, hit run, and paste your Claude API key below to activate.</p>
 </header>
 
 <section class="wrap" style="padding-bottom:40px">
@@ -166,7 +166,7 @@ apiKeyInput.addEventListener('input', () => {
 // ---- Claude API call ----
 async function callClaude(prompt) {
   if (!claudeKey || !claudeKey.startsWith('sk-ant-')) {
-    throw new Error('No API key — paste your Claude key above to activate the demo.');
+    throw new Error('No API key. Paste your Claude key above to activate the demo.');
   }
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -206,7 +206,7 @@ const TOOLS = {
     presets:["Aave","Morpho","Spark","Curve","Pendle"],
     label:"defi.protocol",
     placeholder:"e.g. Morpho",
-    run: async v => await callClaude(`For "${v}", generate a brief positioning report. Use UPPERCASE headers:\n\nPOSITIONING MATRIX — 2 axes, 4 quadrants, where ${v} sits and where 3 main competitors sit.\nNARRATIVE ANGLE — one sentence challenger positioning.\nTHREE MESSAGING PILLARS — listed.\nNEXT TWEET — one crisp tweet-ready example.\n\nPunchy, no fluff.`)
+    run: async v => await callClaude(`For "${v}", generate a brief positioning report. Use UPPERCASE headers:\n\nPOSITIONING MATRIX: 2 axes, 4 quadrants, where ${v} sits and where 3 main competitors sit.\nNARRATIVE ANGLE: one sentence challenger positioning.\nTHREE MESSAGING PILLARS: listed.\nNEXT TWEET: one crisp tweet-ready example.\n\nPunchy, no fluff.`)
   },
   "hijack":{
     title:"narrative-hijack",
@@ -214,7 +214,7 @@ const TOOLS = {
     presets:["Fed pivot to rate cuts","Stablecoin law passes","L1 outage trending","Major exchange hack","AI + crypto merger"],
     label:"news.event",
     placeholder:"e.g. Fed pivot to rate cuts",
-    run: async v => await callClaude(`News event: "${v}". Produce:\n\nSCORE — 1–10 hijackability + 1-line reason.\nURGENCY — high/med/low + time window.\nTWEET — ready to post, under 260 chars.\nTHREAD — 4 numbered beats.\nLINKEDIN — short draft, 5 lines max.\n\nPoster is a Web3 marketer known for data-driven takes. Punchy, no emoji.`)
+    run: async v => await callClaude(`News event: "${v}". Produce:\n\nSCORE: 1-10 hijackability + 1-line reason.\nURGENCY: high/med/low + time window.\nTWEET: ready to post, under 260 chars.\nTHREAD: 4 numbered beats.\nLINKEDIN: short draft, 5 lines max.\n\nPoster is a Web3 marketer known for data-driven takes. Punchy, no emoji.`)
   },
   "monitor":{
     title:"competitor-monitor",
@@ -222,14 +222,14 @@ const TOOLS = {
     presets:["GMX ships v3","dYdX launches perps on Solana","Polymarket adds sports","Jupiter acquires a DEX","Aave adds BTC collateral"],
     label:"competitor.move",
     placeholder:"e.g. GMX ships v3",
-    run: async v => await callClaude(`Competitor move: "${v}". Alert structure with UPPERCASE headers:\n\nALERT — 1-line summary.\nCATEGORY — product launch / partnership / funding / chain integration / narrative.\nSIGNAL SCORE — 1–10 + half-line reason.\nWHAT THIS MEANS FOR YOU — 3 sentences; reader is a perp-DEX-adjacent marketing lead.\nRECOMMENDED ACTION — 1 crisp next-step.\n\nTerse analyst tone.`)
+    run: async v => await callClaude(`Competitor move: "${v}". Alert structure with UPPERCASE headers:\n\nALERT: 1-line summary.\nCATEGORY: product launch / partnership / funding / chain integration / narrative.\nSIGNAL SCORE: 1-10 + half-line reason.\nWHAT THIS MEANS FOR YOU: 3 sentences; reader is a perp-DEX-adjacent marketing lead.\nRECOMMENDED ACTION: 1 crisp next-step.\n\nTerse analyst tone.`)
   },
   "ad-machine":{
     title:"ad-creative-machine",
     meta:"fastapi · claude opus + sonnet · gemini 2.5 flash · react",
     launch: true,
     url: "ad-machine/",
-    description: "Multi-model pipeline — Opus 4.7 writes a strategic brief, Sonnet 4.6 generates 5 copy variations per platform, Gemini 2.5 Flash Image renders platform-sized visuals. Export ZIP, Google RSA CSV, or push via Buffer.",
+    description: "Multi-model pipeline. Opus 4.7 writes a strategic brief, Sonnet 4.6 generates 5 copy variations per platform, and Gemini 2.5 Flash Image renders platform-sized visuals. Export ZIP, Google RSA CSV, or push via Buffer.",
     features:["X / LinkedIn / Meta / Google RSA","Compliance linting + slop scoring","Performance CSV → Round 2 iteration","Asset pairings + export bundle"],
     note:"// fully deployed · backend on fly.io · no local setup needed",
   },
@@ -238,7 +238,7 @@ const TOOLS = {
     meta:"claude sonnet · voice calibration · quality gate · react",
     launch: true,
     url: "content-machine/",
-    description: "AI content engine with company voice calibration, anti-slop quality gate, and humanizer. Generates long-form posts, threads, and newsletters that sound like you — not ChatGPT.",
+    description: "AI content engine with company voice calibration, anti-slop quality gate, and humanizer. Generates long-form posts, threads, and newsletters that sound like you, not ChatGPT.",
     features:["Voice profile calibration from samples","Slop scoring + rewrite loop","Multi-format: threads, posts, newsletters","Research Mode with live web search"],
     note:"// fully deployed · no backend required",
   },

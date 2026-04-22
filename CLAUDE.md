@@ -63,6 +63,7 @@ Changes made:
 - changed `AI Content Machine` card to open the actual app directly
 - added hash-aware Tool Studio state so links like `tool-studio.html#positioning` open the correct tool
 - tightened tool section copy so it reads more like employer-facing proof than a feature dump
+- removed em dashes and en dashes from user-facing website copy, including shipped app bundles, to match Charubak's writing preference
 
 ## Next Likely Improvements
 
