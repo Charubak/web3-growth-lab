@@ -18,6 +18,8 @@ Important positioning rule:
 - lead with `Web3 growth lead` / `marketing lead`
 - support that with `operator who builds` and `marketer who ships tools`
 - do not accidentally reposition him into "AI engineer looking for engineering roles"
+- audience is technically literate founders, hiring managers, and early-stage operators who respect real work and real numbers
+- builder angle should feel like operating leverage, not a career pivot away from marketing
 
 ## Tone And Aesthetic
 
@@ -64,10 +66,14 @@ Changes made:
 - added hash-aware Tool Studio state so links like `tool-studio.html#positioning` open the correct tool
 - tightened tool section copy so it reads more like employer-facing proof than a feature dump
 - removed em dashes and en dashes from user-facing website copy, including shipped app bundles, to match Charubak's writing preference
+- rewrote homepage, studio, CV, and cover-letter copy using the principles from `ai-content-machine/README.md` and `voices/charubak/voice_v1.md`
+- sharpened the narrative around "senior Web3 growth marketer with receipts" and used the builder layer as the differentiator
+- pushed the writing toward specific outcomes, founder-facing clarity, and less generic marketing language
 
 ## Next Likely Improvements
 
 - keep improving tool card copy toward business outcome and operator leverage
 - consider whether Tool Studio should remain key-gated in-browser or be reframed as a safer showcase
 - add more public proof artifacts such as case studies or project walkthroughs
+- keep future copy close to the voice document rules: specific numbers, direct claims, minimal fluff, no generic AI-marketer language
 - keep this file updated after every meaningful site iteration

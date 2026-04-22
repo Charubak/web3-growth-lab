@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Tool Studio · AI Marketing Tools by Charubak Chakrabarti</title>
+<title>Operator Studio · Marketing Intelligence Tools by Charubak Chakrabarti</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Live tool studio to run Charubak's AI marketing tools in your browser. Competitive deep-dives, narrative hijacking scores, and protocol positioning matrices.">
+<meta name="description" content="Live showcase of the AI systems behind Charubak's Web3 marketing work. Competitive deep-dives, protocol positioning, narrative response, and content pipelines.">
 <link rel="canonical" href="https://web3growthlab.com/tool-studio.html">
-<meta property="og:title" content="Tool Studio · AI Marketing Tools by Charubak Chakrabarti">
-<meta property="og:description" content="Run four AI marketing intelligence tools live in your browser.">
+<meta property="og:title" content="Operator Studio · Marketing Intelligence Tools by Charubak Chakrabarti">
+<meta property="og:description" content="Live demos of the systems behind Charubak's Web3 marketing process.">
 <meta property="og:url" content="https://web3growthlab.com/tool-studio.html">
 <meta property="og:image" content="https://web3growthlab.com/assets/charubak-portrait.jpg">
 <meta name="twitter:card" content="summary">
@@ -95,9 +95,9 @@
 </div>
 
 <header class="head wrap">
-  <div class="pre">▰ live-sandbox · run-any-tool</div>
+  <div class="pre">▰ operator-studio · live demos</div>
   <h1>// the live <span class="hl">studio</span>.</h1>
-  <p class="lead">Six tools, live in your browser. The two pipeline tools, ad creatives and content engine, open as standalone apps. The four intelligence tools run directly here. Drop in an input, hit run, and paste your Claude API key below to activate.</p>
+  <p class="lead">These are working versions of the systems behind how I do Web3 marketing. The two pipeline tools open as standalone apps. The four intelligence tools run here in-browser. If you want to test them, drop in an input, hit run, and paste your Claude API key below.</p>
 </header>
 
 <section class="wrap" style="padding-bottom:40px">
@@ -113,15 +113,15 @@
   <div class="studio">
     <aside class="sidebar">
       <h4>select.tool</h4>
-      <button class="tool-btn active" data-tool="ad-machine"><span class="num">06/</span><span class="t">ad-creative-machine<span>copy + visuals pipeline</span></span></button>
-      <button class="tool-btn" data-tool="content-machine"><span class="num">05/</span><span class="t">ai-content-engine<span>humanized content at scale</span></span></button>
-      <button class="tool-btn" data-tool="deep-dive"><span class="num">03/</span><span class="t">competitive-deep-dive<span>12-section reports</span></span></button>
-      <button class="tool-btn" data-tool="positioning"><span class="num">04/</span><span class="t">protocol-positioning<span>matrix + narrative</span></span></button>
-      <button class="tool-btn" data-tool="hijack"><span class="num">02/</span><span class="t">narrative-hijack<span>score + drafts</span></span></button>
-      <button class="tool-btn" data-tool="monitor"><span class="num">01/</span><span class="t">competitor-monitor<span>alerts + analysis</span></span></button>
+      <button class="tool-btn active" data-tool="ad-machine"><span class="num">06/</span><span class="t">ad-creative-machine<span>operator-grade paid media pipeline</span></span></button>
+      <button class="tool-btn" data-tool="content-machine"><span class="num">05/</span><span class="t">ai-content-machine<span>voice-calibrated content system</span></span></button>
+      <button class="tool-btn" data-tool="deep-dive"><span class="num">03/</span><span class="t">competitive-deep-dive<span>strategist-grade market brief</span></span></button>
+      <button class="tool-btn" data-tool="positioning"><span class="num">04/</span><span class="t">protocol-positioning<span>category angle + messaging</span></span></button>
+      <button class="tool-btn" data-tool="hijack"><span class="num">02/</span><span class="t">narrative-hijack<span>timing + response drafts</span></span></button>
+      <button class="tool-btn" data-tool="monitor"><span class="num">01/</span><span class="t">competitor-monitor<span>alerts with what to do next</span></span></button>
       <div class="readme">
         <div class="rt">README</div>
-        <div>Demos run on Claude Haiku via the Anthropic API. Real tools use your own keys and run locally. Source on <a href="https://github.com/Charubak" target="_blank" rel="noopener">github/Charubak</a>.</div>
+        <div>This page is a working showcase of the systems behind my day-to-day marketing process. Demos call Claude Haiku in the browser. The full tools run locally or on hosted backends. Source on <a href="https://github.com/Charubak" target="_blank" rel="noopener">github/Charubak</a>.</div>
       </div>
     </aside>
     <div class="stage">
@@ -229,17 +229,17 @@ const TOOLS = {
     meta:"fastapi · claude opus + sonnet · gemini 2.5 flash · react",
     launch: true,
     url: "ad-machine/",
-    description: "Multi-model pipeline. Opus 4.7 writes a strategic brief, Sonnet 4.6 generates 5 copy variations per platform, and Gemini 2.5 Flash Image renders platform-sized visuals. Export ZIP, Google RSA CSV, or push via Buffer.",
+    description: "Built for teams that need paid creative output without creative chaos. Opus writes the strategic brief, Sonnet generates platform-specific copy variations, and Gemini renders channel-sized visuals you can export or push into workflow.",
     features:["X / LinkedIn / Meta / Google RSA","Compliance linting + slop scoring","Performance CSV → Round 2 iteration","Asset pairings + export bundle"],
     note:"// fully deployed · backend on fly.io · no local setup needed",
   },
   "content-machine":{
-    title:"ai-content-engine",
+    title:"ai-content-machine",
     meta:"claude sonnet · voice calibration · quality gate · react",
     launch: true,
     url: "content-machine/",
-    description: "AI content engine with company voice calibration, anti-slop quality gate, and humanizer. Generates long-form posts, threads, and newsletters that sound like you, not ChatGPT.",
-    features:["Voice profile calibration from samples","Slop scoring + rewrite loop","Multi-format: threads, posts, newsletters","Research Mode with live web search"],
+    description: "A modular AI content system for Web3 and AI-first brands. It calibrates to voice, generates cross-channel drafts from one brief, and runs every output through a 25-pattern quality gate so it sounds like a specific human, not generic AI.",
+    features:["30-45 min voice onboarding into a versioned Voice Document","One brief to LinkedIn long-form, LinkedIn short, X thread, and X single","25-pattern quality gate with rewrite loop on failure","Narrative fast-path, brief queue, review dashboard, Buffer flow"],
     note:"// fully deployed · no backend required",
   },
 };
