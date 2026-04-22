@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>charubak.cc ~ $ whoami</title>
+<title>Charubak Chakrabarti · Web3 Growth Lead Who Builds Marketing Systems</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!-- SEO -->
-<meta name="description" content="Charubak Chakrabarti — Web3 growth and marketing leader. 5+ years at L1 blockchains, perp DEXs, and DeFi protocols. Ships AI tools too.">
+<meta name="description" content="Charubak Chakrabarti is a Web3 growth and marketing lead for L1s, perp DEXs, prediction markets, and DeFi. He also builds AI marketing systems for intelligence, positioning, and content.">
 <meta name="author" content="Charubak Chakrabarti">
+<link rel="canonical" href="https://web3growthlab.com/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Charubak Chakrabarti · Web3 Growth Lead">
-<meta property="og:description" content="5+ years driving growth for L1 blockchains, perp DEXs &amp; DeFi protocols — paired with AI tools I build myself.">
-<meta property="og:image" content="https://charubak.github.io/web3-growth-lab/assets/charubak-portrait.jpg">
-<meta property="og:url" content="https://charubak.github.io/web3-growth-lab/">
+<meta property="og:title" content="Charubak Chakrabarti · Web3 Growth Lead Who Builds Marketing Systems">
+<meta property="og:description" content="Web3 growth lead for L1s, perp DEXs, prediction markets, and DeFi. Also builds AI systems for competitive intelligence, positioning, and content.">
+<meta property="og:image" content="https://web3growthlab.com/assets/charubak-portrait.jpg">
+<meta property="og:url" content="https://web3growthlab.com/">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@thedeludedbull">
 <meta name="twitter:creator" content="@thedeludedbull">
-<meta name="twitter:title" content="Charubak Chakrabarti · Web3 Growth Lead">
-<meta name="twitter:description" content="5+ years driving growth for L1 blockchains, perp DEXs &amp; DeFi protocols.">
-<meta name="twitter:image" content="https://charubak.github.io/web3-growth-lab/assets/charubak-portrait.jpg">
+<meta name="twitter:title" content="Charubak Chakrabarti · Web3 Growth Lead Who Builds Marketing Systems">
+<meta name="twitter:description" content="Web3 growth lead for L1s, perp DEXs, prediction markets, and DeFi. Builds AI systems for competitive intelligence, positioning, and content.">
+<meta name="twitter:image" content="https://web3growthlab.com/assets/charubak-portrait.jpg">
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,6 +200,8 @@
   /* ---- Tools ---- */
   .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .tool{border:1px solid var(--rule-2);background:var(--bg-2);padding:0;position:relative;overflow:hidden;transition:all .3s}
+  .tool[data-href]{cursor:pointer}
+  .tool[data-href]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
   .tool:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent), 0 0 40px -10px rgba(196,245,66,.3)}
   .tool .t-head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule);background:var(--bg-3);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
   .tool .t-head .dots{display:flex;gap:6px}
@@ -213,14 +216,16 @@
   .tool .t-features{list-style:none;font-size:11.5px;color:var(--ink-2);margin:8px 0 16px}
   .tool .t-features li{padding:4px 0;padding-left:18px;position:relative}
   .tool .t-features li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
-  .tool .t-run{border-top:1px solid var(--rule);padding:14px 18px;background:var(--bg-3);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--accent)}
+  .tool .t-run{border-top:1px solid var(--rule);padding:14px 18px;background:var(--bg-3);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--accent);gap:16px;flex-wrap:wrap}
   .tool .t-run .cmd{color:var(--ink)}
   .tool .t-run .cmd::before{content:"$ ";color:var(--accent)}
   .tool .t-run a{color:var(--accent);letter-spacing:.06em;transition:opacity .2s}
   .tool .t-run a:hover{opacity:.7}
+  .tool .t-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
   .tool .t-stack{display:flex;gap:6px;flex-wrap:wrap;padding:10px 18px;border-top:1px solid var(--rule)}
   .chip{font-size:10px;letter-spacing:.06em;padding:3px 7px;background:var(--bg-3);border:1px solid var(--rule-2);color:var(--ink-2)}
   .chip.ac{color:var(--accent);border-color:var(--accent)}
+  .section-note{max-width:760px;margin:-8px 0 28px;color:var(--ink-2);font-size:14px;line-height:1.7;font-family:var(--sans)}
 
   /* ---- Skills ---- */
   .sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);border-right:0;border-bottom:0;background:var(--bg-2)}
@@ -234,7 +239,11 @@
 
   /* ---- Writing ---- */
   .writing-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .writing-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
   .writing h3{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  .writing-head h3{margin-bottom:0}
+  .writing-head a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .writing-head a:hover{color:var(--accent)}
   .hijack-list{list-style:none;border-top:1px solid var(--rule)}
   .hijack-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:30px 1fr;gap:12px;color:var(--ink-2);font-size:13px;line-height:1.55;font-family:var(--sans)}
   .hijack-list li .n{color:var(--accent);font-family:var(--mono);font-size:11px;padding-top:2px}
@@ -558,12 +567,13 @@
         <h2>// tools.ive.built</h2>
       </div>
       <div></div>
-      <div class="meta">06 shipped · python + react · all deployed</div>
+      <div class="meta">06 shipped · tools that shorten marketing cycle time</div>
     </div>
+    <p class="section-note">These are the systems behind how I work as a marketing lead. I build tools when manual research, narrative analysis, or content production becomes a bottleneck, then turn them into repeatable operating leverage.</p>
 
     <div class="tools-grid">
       <!-- 01 -->
-      <article class="tool">
+      <article class="tool" data-href="https://github.com/Charubak/competitor-monitor" data-new-tab="true" aria-label="Open Competitor Move Monitor repository">
         <div class="t-head">
           <div class="dots"><i></i><i></i><i></i></div>
           <div><span class="t-num">01/</span> competitor-monitor</div>
@@ -571,7 +581,7 @@
         </div>
         <div class="t-body">
           <h3>Competitor Move Monitor</h3>
-          <p class="t-desc">Watches a configurable list of competitor projects 24/7 and fires Telegram alerts on significant moves — product launches, partnerships, funding, chain integrations. Every alert includes AI-generated competitive analysis personalised to your project.</p>
+          <p class="t-desc">Built for the question every growth team asks too late: what just changed in the market, and what should we do about it? This monitor tracks competitor moves in real time and turns them into usable strategic alerts, not headline spam.</p>
           <ul class="t-features">
             <li>Real-time news monitoring via Google News RSS</li>
             <li>AI batch-filters noise from signal in one API call</li>
@@ -582,11 +592,11 @@
         <div class="t-stack">
           <span class="chip ac">Python</span><span class="chip">Claude Haiku</span><span class="chip">Telegram</span><span class="chip">SQLite</span><span class="chip">RSS</span>
         </div>
-        <div class="t-run"><span class="cmd">python3 bot.py</span><a href="https://github.com/Charubak" target="_blank" rel="noopener">↗ github</a></div>
+        <div class="t-run"><span class="cmd">python3 bot.py</span><div class="t-actions"><a href="https://github.com/Charubak/competitor-monitor" target="_blank" rel="noopener">repo ↗</a></div></div>
       </article>
 
       <!-- 02 -->
-      <article class="tool">
+      <article class="tool" data-href="https://github.com/Charubak/narrative-monitor" data-new-tab="true" aria-label="Open Narrative Hijacking Monitor repository">
         <div class="t-head">
           <div class="dots"><i></i><i></i><i></i></div>
           <div><span class="t-num">02/</span> narrative-monitor</div>
@@ -594,7 +604,7 @@
         </div>
         <div class="t-body">
           <h3>Narrative Hijacking Monitor</h3>
-          <p class="t-desc">Scans 11 crypto news sources continuously and uses AI to score hijacking opportunities 1–10. High-scorers get urgency ratings and ready-to-post drafts for tweet, thread, and LinkedIn — delivered to Telegram.</p>
+          <p class="t-desc">Turns narrative monitoring into a repeatable content operation. It scans the market continuously, ranks which moments are actually worth jumping on, and ships draft responses fast enough to matter while the window is still open.</p>
           <ul class="t-features">
             <li>11 RSS sources ranked by recency + authority tier</li>
             <li>AI scores + generates 3 content formats per alert</li>
@@ -604,11 +614,11 @@
         <div class="t-stack">
           <span class="chip ac">Python</span><span class="chip">Groq LLM</span><span class="chip">Telegram</span><span class="chip">RSS</span>
         </div>
-        <div class="t-run"><span class="cmd">python3.12 bot.py</span><a href="https://github.com/Charubak" target="_blank" rel="noopener">↗ github</a></div>
+        <div class="t-run"><span class="cmd">python3.12 bot.py</span><div class="t-actions"><a href="https://github.com/Charubak/narrative-monitor" target="_blank" rel="noopener">repo ↗</a></div></div>
       </article>
 
       <!-- 03 -->
-      <article class="tool">
+      <article class="tool" data-href="tool-studio.html#deep-dive" aria-label="Open the Competitive Deep-Dive demo">
         <div class="t-head">
           <div class="dots"><i></i><i></i><i></i></div>
           <div><span class="t-num">03/</span> competitive-deep-dive</div>
@@ -616,7 +626,7 @@
         </div>
         <div class="t-body">
           <h3>Competitive Deep-Dive Tool</h3>
-          <p class="t-desc">Auto-discovers competitors for any Web3 project, then generates 12-section intelligence reports covering TVL trends, developer activity, social footprint, narrative gaps, and strategic recommendations. Exports to Markdown and Word.</p>
+          <p class="t-desc">Replaces scattered competitor research with a strategist-grade briefing. Give it a project and it pulls the key market, product, developer, and narrative signals into one report you can use for positioning, campaign planning, or leadership updates.</p>
           <ul class="t-features">
             <li>AI competitor discovery — just name your project</li>
             <li>Live data: DeFiLlama, CoinGecko, GitHub, LunarCrush</li>
@@ -626,11 +636,11 @@
         <div class="t-stack">
           <span class="chip ac">Python</span><span class="chip">Claude</span><span class="chip">DeFiLlama</span><span class="chip">CoinGecko</span><span class="chip">DOCX</span>
         </div>
-        <div class="t-run"><span class="cmd">python3.12 main.py</span><a href="tool-studio.html">↗ live demo</a></div>
+        <div class="t-run"><span class="cmd">python3.12 main.py</span><div class="t-actions"><a href="tool-studio.html#deep-dive">demo ↗</a><a href="https://github.com/Charubak/competitive-deep-dive" target="_blank" rel="noopener">repo ↗</a></div></div>
       </article>
 
       <!-- 04 -->
-      <article class="tool">
+      <article class="tool" data-href="tool-studio.html#positioning" aria-label="Open the Protocol Positioning Matrix demo">
         <div class="t-head">
           <div class="dots"><i></i><i></i><i></i></div>
           <div><span class="t-num">04/</span> protocol-positioning</div>
@@ -638,7 +648,7 @@
         </div>
         <div class="t-body">
           <h3>Protocol Positioning Matrix</h3>
-          <p class="t-desc">Generates comprehensive positioning reports for any DeFi protocol. Pulls live TVL, fee revenue, GitHub velocity and social data, then synthesizes a competitive positioning matrix with narrative angle recommendations.</p>
+          <p class="t-desc">Built for the harder part of marketing, not just execution but articulation. This tool converts live protocol data and competitive context into a sharper category position, clearer messaging pillars, and usable narrative angles.</p>
           <ul class="t-features">
             <li>Live multi-source data aggregation</li>
             <li>Competitive gap + narrative angle analysis</li>
@@ -648,11 +658,11 @@
         <div class="t-stack">
           <span class="chip ac">Python</span><span class="chip">Claude</span><span class="chip">DeFiLlama</span><span class="chip">CoinGecko</span>
         </div>
-        <div class="t-run"><span class="cmd">python3.12 main.py</span><a href="tool-studio.html">↗ live demo</a></div>
+        <div class="t-run"><span class="cmd">python3.12 main.py</span><div class="t-actions"><a href="tool-studio.html#positioning">demo ↗</a><a href="https://github.com/Charubak/protocol-positioning" target="_blank" rel="noopener">repo ↗</a></div></div>
       </article>
 
       <!-- 05 -->
-      <article class="tool">
+      <article class="tool" data-href="https://github.com/Charubak/web3-career-bot" data-new-tab="true" aria-label="Open Web3 Career Bot repository">
         <div class="t-head">
           <div class="dots"><i></i><i></i><i></i></div>
           <div><span class="t-num">05/</span> web3-career-bot</div>
@@ -660,7 +670,7 @@
         </div>
         <div class="t-body">
           <h3>Web3 Career Bot</h3>
-          <p class="t-desc">Customizable Telegram bot for Web3 job hunting. Scrapes 15+ job boards, filters by location and role type, delivers daily digests. Open source — fork, configure, deploy to Fly.io in minutes.</p>
+          <p class="t-desc">A proof point that I build practical automation, not just internal demos. It aggregates 15+ Web3 job sources, filters by role and geography, and delivers a clean signal feed through Telegram with an open-source setup anyone can deploy.</p>
           <ul class="t-features">
             <li>15+ job board adapters (web3.career, cryptojobs, etc.)</li>
             <li>Filters: remote, Dubai, Singapore; no-US-auth</li>
@@ -670,11 +680,11 @@
         <div class="t-stack">
           <span class="chip ac">Python</span><span class="chip">Telegram</span><span class="chip">SQLite</span><span class="chip">Fly.io</span><span class="chip">OSS</span>
         </div>
-        <div class="t-run"><span class="cmd">python3 bot.py</span><a href="https://github.com/Charubak" target="_blank" rel="noopener">↗ github</a></div>
+        <div class="t-run"><span class="cmd">python3 bot.py</span><div class="t-actions"><a href="https://github.com/Charubak/web3-career-bot" target="_blank" rel="noopener">repo ↗</a></div></div>
       </article>
 
       <!-- 06 -->
-      <article class="tool">
+      <article class="tool" data-href="content-machine/" aria-label="Open the AI Content Machine app">
         <div class="t-head">
           <div class="dots"><i></i><i></i><i></i></div>
           <div><span class="t-num">06/</span> ai-content-machine</div>
@@ -682,7 +692,7 @@
         </div>
         <div class="t-body">
           <h3>AI Content Machine</h3>
-          <p class="t-desc">Full content engine for Web3 and AI-first brands. 30-min voice onboarding produces a versioned Voice Document. One brief generates LinkedIn long-form, LinkedIn short, X thread, and X tweet — all run through a 25-pattern AI quality gate. Nothing sounds like generic AI.</p>
+          <p class="t-desc">The clearest example of how I think about AI in marketing: not mass content sludge, but brand-safe scale. It calibrates to voice, generates cross-channel drafts from one brief, and runs every output through a quality gate designed to catch generic AI writing before it ships.</p>
           <ul class="t-features">
             <li>Voice calibration — posts sound like a specific human</li>
             <li>25-pattern humanizer with auto-rewrite on failure</li>
@@ -693,7 +703,7 @@
         <div class="t-stack">
           <span class="chip ac">FastAPI</span><span class="chip">React</span><span class="chip">Claude Sonnet</span><span class="chip">Fly.io</span><span class="chip">OSS</span>
         </div>
-        <div class="t-run"><span class="cmd">uvicorn main:app --port 8000</span><a href="tool-studio.html">↗ live demo</a></div>
+        <div class="t-run"><span class="cmd">uvicorn main:app --port 8000</span><div class="t-actions"><a href="content-machine/">app ↗</a><a href="https://github.com/Charubak/ai-content-machine" target="_blank" rel="noopener">repo ↗</a></div></div>
       </article>
     </div>
   </div>
@@ -722,21 +732,21 @@
         </ul>
       </div>
       <div>
-        <h3>writing.highlights</h3>
-        <a class="piece" href="mailto:charubak.chakrabarti@gmail.com?subject=Writing request: The Forecastathon" title="Request this piece">
-          <div class="p-title">The Forecastathon: Where Models Meet Markets</div><div class="p-tag">case · 2025</div>
+        <div class="writing-head">
+          <h3>writing.highlights</h3>
+          <a href="https://medium.com/@onchaineconomist" target="_blank" rel="noopener">view all on medium ↗</a>
+        </div>
+        <a class="piece" href="https://medium.com/@onchaineconomist/how-i-built-5-ai-tools-for-web3-marketing-intelligence-31d3ed697953" target="_blank" rel="noopener" title="Read this piece on Medium">
+          <div class="p-title">How I Built 5 AI Tools for Web3 Marketing Intelligence</div><div class="p-tag">portfolio · feb 2026</div>
         </a>
-        <a class="piece" href="mailto:charubak.chakrabarti@gmail.com?subject=Writing request: Building on Autonity with Claude" title="Request this piece">
-          <div class="p-title">How I Built a Prediction Market on Autonity Using Claude Code</div><div class="p-tag">technical · 25</div>
+        <a class="piece" href="https://medium.com/@onchaineconomist/i-built-a-free-telegram-bot-that-finds-web3-jobs-for-you-heres-how-to-set-it-up-in-5-minutes-da307e5725ea" target="_blank" rel="noopener" title="Read this piece on Medium">
+          <div class="p-title">I Built a Free Telegram Bot That Finds Web3 Jobs For You. Here’s How to Set It Up in 5 Minutes</div><div class="p-tag">open source · feb 2026</div>
         </a>
-        <a class="piece" href="mailto:charubak.chakrabarti@gmail.com?subject=Writing request: Narrative Hijacking Playbook" title="Request this piece">
-          <div class="p-title">The Narrative Hijacking Playbook</div><div class="p-tag">playbook · 25</div>
+        <a class="piece" href="https://medium.com/@onchaineconomist/how-i-built-a-prediction-market-product-using-claude-code-and-what-i-learned-along-the-way-a2dbae63aab5" target="_blank" rel="noopener" title="Read this piece on Medium">
+          <div class="p-title">How I Built a Prediction Market on Autonity Using Claude Code (And What I Learned Along the Way)</div><div class="p-tag">build log · feb 2026</div>
         </a>
-        <a class="piece" href="mailto:charubak.chakrabarti@gmail.com?subject=Writing request: Perp DEX Growth" title="Request this piece">
-          <div class="p-title">Perp DEX Growth, Past the Airdrop</div><div class="p-tag">essay · 24</div>
-        </a>
-        <a class="piece" href="mailto:charubak.chakrabarti@gmail.com?subject=Writing request: L1 Positioning" title="Request this piece">
-          <div class="p-title">L1 Positioning in a World of Rollups</div><div class="p-tag">strategy · 24</div>
+        <a class="piece" href="https://medium.com/@onchaineconomist/the-autonity-community-tvl-campaign-5a96bca454e2" target="_blank" rel="noopener" title="Read this piece on Medium">
+          <div class="p-title">The Autonity Community TVL Campaign</div><div class="p-tag">ecosystem · dec 2025</div>
         </a>
       </div>
     </div>
@@ -876,6 +886,34 @@
   }), {threshold:.1});
   document.querySelectorAll('.stat, .role, .tool, .piece, .pillar, .sk-col').forEach(el => {
     el.classList.add('reveal'); io.observe(el);
+  });
+
+  // ---- Clickable tool cards ----
+  document.querySelectorAll('.tool[data-href]').forEach(card => {
+    card.tabIndex = 0;
+    card.setAttribute('role', 'link');
+    const href = card.dataset.href;
+    const openInNewTab = card.dataset.newTab === 'true';
+
+    const openCard = () => {
+      if (openInNewTab) {
+        window.open(href, '_blank', 'noopener');
+        return;
+      }
+      window.location.href = href;
+    };
+
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;
+      openCard();
+    });
+
+    card.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      if (e.target.closest('a, button')) return;
+      e.preventDefault();
+      openCard();
+    });
   });
 </script>
 </body>

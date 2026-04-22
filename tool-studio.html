@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>~/studio · charubak.cc</title>
+<title>Tool Studio · AI Marketing Tools by Charubak Chakrabarti</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Live tool studio — run Charubak's AI marketing tools in your browser. Competitive deep-dives, narrative hijacking scores, protocol positioning matrices.">
-<meta property="og:title" content="Tool Studio · charubak.cc">
+<link rel="canonical" href="https://web3growthlab.com/tool-studio.html">
+<meta property="og:title" content="Tool Studio · AI Marketing Tools by Charubak Chakrabarti">
 <meta property="og:description" content="Run four AI marketing intelligence tools live in your browser.">
-<meta property="og:url" content="https://charubak.github.io/web3-growth-lab/tool-studio.html">
+<meta property="og:url" content="https://web3growthlab.com/tool-studio.html">
+<meta property="og:image" content="https://web3growthlab.com/assets/charubak-portrait.jpg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@thedeludedbull">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -257,7 +259,7 @@ function renderTool(key){
         <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:28px">
           ${t.features.map(f=>`<li style="font-size:11px;letter-spacing:.1em;color:var(--ink-3)"><span style="color:var(--accent);margin-right:8px">▸</span>${f}</li>`).join('')}
         </ul>
-        <a href="${t.url}" target="_blank" rel="noopener" style="display:inline-block;padding:12px 24px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">./launch → ${t.title}</a>
+        <a href="${t.url}" style="display:inline-block;padding:12px 24px;background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">./launch → ${t.title}</a>
         ${t.note ? `<p style="margin-top:12px;font-size:10px;color:var(--ink-3)">${t.note}</p>` : ''}
       </div>
     `;
@@ -300,14 +302,29 @@ function renderTool(key){
   };
 }
 
-document.querySelectorAll('.tool-btn').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('.tool-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    renderTool(b.dataset.tool);
-  };
+function setActiveTool(key) {
+  document.querySelectorAll('.tool-btn').forEach(button => {
+    button.classList.toggle('active', button.dataset.tool === key);
+  });
+  renderTool(key);
+  if (window.location.hash !== `#${key}`) {
+    window.history.replaceState(null, '', `#${key}`);
+  }
+}
+
+document.querySelectorAll('.tool-btn').forEach(button => {
+  button.onclick = () => setActiveTool(button.dataset.tool);
 });
-renderTool('ad-machine');
+
+const initialTool = window.location.hash.replace('#', '');
+setActiveTool(TOOLS[initialTool] ? initialTool : 'ad-machine');
+
+window.addEventListener('hashchange', () => {
+  const key = window.location.hash.replace('#', '');
+  if (TOOLS[key]) {
+    setActiveTool(key);
+  }
+});
 </script>
 </body>
 </html>
