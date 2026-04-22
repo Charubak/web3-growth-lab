@@ -72,6 +72,10 @@ Changes made:
 - upgraded homepage tool-card headlines to focus more on business outcome than project name
 - added mini case-study strips to Autonity and RFX so the experience section shows challenge, move, and result instead of only role summaries
 - reframed the writing section as point of view plus proof, with short "why this matters" context beneath each featured article
+- moved `AI Content Machine` and `Ad Creative Machine` to the top of the homepage tools section so the flagship AI products lead the portfolio story
+- added a homepage card and repo link for `Ad Creative Machine`
+- expanded the homepage bio to focus more on Web3 depth, AI tool-building vision, and personal texture, with less emphasis on edtech history
+- updated Tool Studio so `AI Content Machine` is the default first tool, `Ad Creative Machine` is second, and both hosted tools expose direct repo links from the launch view
 
 ## Next Likely Improvements
 
