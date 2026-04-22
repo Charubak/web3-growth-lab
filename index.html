@@ -192,6 +192,10 @@
   .role .co{font-family:var(--mono);font-size:26px;color:var(--ink);line-height:1.1;letter-spacing:-.015em;font-weight:500;transition:color .3s}
   .role .co .role-t{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;font-weight:400}
   .role .desc{font-size:13px;color:var(--ink-2);margin-top:14px;line-height:1.65;max-width:560px;font-family:var(--sans)}
+  .role .case-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;max-width:620px}
+  .role .case-strip .cs{border:1px solid var(--rule);background:var(--bg-2);padding:10px 12px}
+  .role .case-strip .cs .k{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .role .case-strip .cs .v{font-size:11px;line-height:1.55;color:var(--ink-2);font-family:var(--sans)}
   .role .metrics{display:flex;gap:16px;flex-wrap:wrap}
   .role .metrics .m{border:1px solid var(--rule);padding:12px 14px;min-width:90px;background:var(--bg-2)}
   .role .metrics .m strong{display:block;font-size:22px;color:var(--accent);line-height:1}
@@ -244,14 +248,17 @@
   .writing-head h3{margin-bottom:0}
   .writing-head a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
   .writing-head a:hover{color:var(--accent)}
+  .writing-note{color:var(--ink-2);font-size:13px;line-height:1.7;font-family:var(--sans);margin-bottom:18px}
   .hijack-list{list-style:none;border-top:1px solid var(--rule)}
   .hijack-list li{padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:30px 1fr;gap:12px;color:var(--ink-2);font-size:13px;line-height:1.55;font-family:var(--sans)}
   .hijack-list li .n{color:var(--accent);font-family:var(--mono);font-size:11px;padding-top:2px}
-  .piece{padding:18px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;transition:all .2s;cursor:pointer;color:inherit}
+  .piece{padding:18px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;transition:all .2s;cursor:pointer;color:inherit}
   .piece:first-child{border-top:1px solid var(--rule)}
   .piece:hover{padding-left:12px}
   .piece:hover .p-title{color:var(--accent)}
+  .piece .p-copy{max-width:620px}
   .p-title{font-family:var(--mono);font-size:16px;color:var(--ink);letter-spacing:-.01em;line-height:1.35;font-weight:500;transition:color .2s}
+  .p-dek{margin-top:7px;font-size:12px;color:var(--ink-2);line-height:1.65;font-family:var(--sans)}
   .p-tag{font-size:10px;color:var(--ink-3);letter-spacing:.16em;text-transform:uppercase}
 
   /* ---- Contact ---- */
@@ -270,11 +277,12 @@
   .reveal{opacity:0;transform:translateY(14px);transition:all .7s ease}
   .reveal.in{opacity:1;transform:translateY(0)}
 
-  @media (max-width:960px){
+    @media (max-width:960px){
     .hero-grid,.story-grid,.tools-grid,.writing-grid{grid-template-columns:1fr}
     .stats-grid{grid-template-columns:repeat(2,1fr)}
     .block-head{grid-template-columns:1fr}
     .role{grid-template-columns:1fr}
+    .role .case-strip{grid-template-columns:1fr}
     .pillars{grid-template-columns:1fr}
     .sk-grid{grid-template-columns:1fr}
     nav.main ul{display:none}
@@ -520,6 +528,11 @@
         <div>
           <div class="co">Autonity<em class="role-t">Marketing Lead</em></div>
           <div class="desc">Helped shape the mainnet narrative for an L1 blockchain and turned Forecastathon into a live trader-acquisition engine across four seasons. Recruited Robin Hanson and Corey Hoffstein as advisors, shipped the competition site, and used the product itself as growth infrastructure.</div>
+          <div class="case-strip">
+            <div class="cs"><div class="k">challenge</div><div class="v">Make a technically strong L1 feel relevant to traders and ecosystem participants.</div></div>
+            <div class="cs"><div class="k">move</div><div class="v">Turned Forecastathon into a live acquisition loop instead of treating it like a one-off campaign.</div></div>
+            <div class="cs"><div class="k">result</div><div class="v">2,500+ traders onboarded across four seasons with a stronger narrative around the network.</div></div>
+          </div>
         </div>
         <div class="metrics">
           <div class="m"><strong>2,500+</strong><span>Traders</span></div>
@@ -532,6 +545,11 @@
         <div>
           <div class="co">RFX Exchange<em class="role-t">Head of Growth</em></div>
           <div class="desc">Drove 70K+ closed alpha signups for a zkSync perp DEX and built the KOL motion from zero. Set up outreach, partner ops, and attribution so growth was measurable instead of vibes-based.</div>
+          <div class="case-strip">
+            <div class="cs"><div class="k">challenge</div><div class="v">Closed alpha growth for a perp DEX where hype alone was not enough to sustain pipeline quality.</div></div>
+            <div class="cs"><div class="k">move</div><div class="v">Built the KOL engine, outreach system, and attribution layer together instead of as separate motions.</div></div>
+            <div class="cs"><div class="k">result</div><div class="v">70K+ signups and a partner program with 30+ KOL relationships built from scratch.</div></div>
+          </div>
         </div>
         <div class="metrics">
           <div class="m"><strong>70K+</strong><span>Signups</span></div>
@@ -584,7 +602,7 @@
           <div>● LATEST</div>
         </div>
         <div class="t-body">
-          <h3>Competitor Move Monitor</h3>
+          <h3>See competitor moves before your team reacts late</h3>
           <p class="t-desc">When a competitor ships, funds, partners, or changes message, most teams find out late and react from screenshots. This tool turns that into a real alert with context, signal score, and a recommended response.</p>
           <ul class="t-features">
             <li>Real-time news monitoring via Google News RSS</li>
@@ -607,7 +625,7 @@
           <div>● ACTIVE</div>
         </div>
         <div class="t-body">
-          <h3>Narrative Hijacking Monitor</h3>
+          <h3>Catch the narrative window while it still matters</h3>
           <p class="t-desc">Tracks narrative windows while they are still usable from a marketing perspective. It ranks what matters, how urgent it is, and drafts the first response before the window closes.</p>
           <ul class="t-features">
             <li>11 RSS sources ranked by recency + authority tier</li>
@@ -629,7 +647,7 @@
           <div>● DEMO</div>
         </div>
         <div class="t-body">
-          <h3>Competitive Deep-Dive Tool</h3>
+          <h3>Get the market brief before the meeting starts</h3>
           <p class="t-desc">For when "do a competitor analysis" actually means "tell me how to position against this market by this afternoon." One project name in, strategist-grade brief out.</p>
           <ul class="t-features">
             <li>AI competitor discovery, just name your project</li>
@@ -651,7 +669,7 @@
           <div>● DEMO</div>
         </div>
         <div class="t-body">
-          <h3>Protocol Positioning Matrix</h3>
+          <h3>Sharpen the category story fast</h3>
           <p class="t-desc">Built for the harder part of marketing: not execution, articulation. It turns live protocol data and competitive context into a sharper category position, clearer messaging pillars, and narrative angles you can actually use.</p>
           <ul class="t-features">
             <li>Live multi-source data aggregation</li>
@@ -673,7 +691,7 @@
           <div>● OPEN SOURCE</div>
         </div>
         <div class="t-body">
-          <h3>Web3 Career Bot</h3>
+          <h3>Build once, ship useful automation</h3>
           <p class="t-desc">Proof that I build practical automation, not internal demos that die in a folder. It aggregates 15+ Web3 job sources, filters by role and geography, and ships a clean signal feed through Telegram.</p>
           <ul class="t-features">
             <li>15+ job board adapters (web3.career, cryptojobs, etc.)</li>
@@ -695,7 +713,7 @@
           <div>● LATEST</div>
         </div>
         <div class="t-body">
-          <h3>AI Content Machine</h3>
+          <h3>Scale content without sounding synthetic</h3>
           <p class="t-desc">Built for Web3 and AI-first brands that want scale without sounding like ChatGPT. One brief becomes LinkedIn long-form, LinkedIn short, X thread, and X single tweet, all checked against a 25-pattern quality gate before they ship.</p>
           <ul class="t-features">
             <li>Voice calibration, so posts sound like a specific human</li>
@@ -727,6 +745,7 @@
     <div class="writing-grid">
       <div>
         <h3>core.angles</h3>
+        <p class="writing-note">If you read enough of my writing, the through-line is pretty consistent: most teams do not have an awareness problem, they have an articulation and adoption problem. These are the arguments I keep coming back to because they show up in real work.</p>
         <ul class="hijack-list">
           <li><span class="n">01</span><span>What founders get wrong about growth marketing</span></li>
           <li><span class="n">02</span><span>DeFi tactics that actually move TVL and users</span></li>
@@ -741,16 +760,16 @@
           <a href="https://medium.com/@onchaineconomist" target="_blank" rel="noopener">view all on medium ↗</a>
         </div>
         <a class="piece" href="https://medium.com/@onchaineconomist/how-i-built-5-ai-tools-for-web3-marketing-intelligence-31d3ed697953" target="_blank" rel="noopener" title="Read this piece on Medium">
-          <div class="p-title">How I Built 5 AI Tools for Web3 Marketing Intelligence</div><div class="p-tag">portfolio · feb 2026</div>
+          <div class="p-copy"><div class="p-title">How I Built 5 AI Tools for Web3 Marketing Intelligence</div><div class="p-dek">The builder layer in practical terms: five systems built because repetitive strategy work was too slow to keep doing manually.</div></div><div class="p-tag">portfolio · feb 2026</div>
         </a>
         <a class="piece" href="https://medium.com/@onchaineconomist/i-built-a-free-telegram-bot-that-finds-web3-jobs-for-you-heres-how-to-set-it-up-in-5-minutes-da307e5725ea" target="_blank" rel="noopener" title="Read this piece on Medium">
-          <div class="p-title">I Built a Free Telegram Bot That Finds Web3 Jobs For You. Here’s How to Set It Up in 5 Minutes</div><div class="p-tag">open source · feb 2026</div>
+          <div class="p-copy"><div class="p-title">I Built a Free Telegram Bot That Finds Web3 Jobs For You. Here’s How to Set It Up in 5 Minutes</div><div class="p-dek">A simple example of the kind of automation I like: useful, public, deployable, and clearly better than doing the task by hand.</div></div><div class="p-tag">open source · feb 2026</div>
         </a>
         <a class="piece" href="https://medium.com/@onchaineconomist/how-i-built-a-prediction-market-product-using-claude-code-and-what-i-learned-along-the-way-a2dbae63aab5" target="_blank" rel="noopener" title="Read this piece on Medium">
-          <div class="p-title">How I Built a Prediction Market on Autonity Using Claude Code (And What I Learned Along the Way)</div><div class="p-tag">build log · feb 2026</div>
+          <div class="p-copy"><div class="p-title">How I Built a Prediction Market on Autonity Using Claude Code (And What I Learned Along the Way)</div><div class="p-dek">Less "AI can code" and more what it looks like when a marketer uses code to ship a real product surface tied to growth.</div></div><div class="p-tag">build log · feb 2026</div>
         </a>
         <a class="piece" href="https://medium.com/@onchaineconomist/the-autonity-community-tvl-campaign-5a96bca454e2" target="_blank" rel="noopener" title="Read this piece on Medium">
-          <div class="p-title">The Autonity Community TVL Campaign</div><div class="p-tag">ecosystem · dec 2025</div>
+          <div class="p-copy"><div class="p-title">The Autonity Community TVL Campaign</div><div class="p-dek">A campaign breakdown that shows how I think about ecosystem growth, incentives, and what actually changes behaviour.</div></div><div class="p-tag">ecosystem · dec 2025</div>
         </a>
       </div>
     </div>

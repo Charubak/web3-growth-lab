@@ -69,6 +69,9 @@ Changes made:
 - rewrote homepage, studio, CV, and cover-letter copy using the principles from `ai-content-machine/README.md` and `voices/charubak/voice_v1.md`
 - sharpened the narrative around "senior Web3 growth marketer with receipts" and used the builder layer as the differentiator
 - pushed the writing toward specific outcomes, founder-facing clarity, and less generic marketing language
+- upgraded homepage tool-card headlines to focus more on business outcome than project name
+- added mini case-study strips to Autonity and RFX so the experience section shows challenge, move, and result instead of only role summaries
+- reframed the writing section as point of view plus proof, with short "why this matters" context beneath each featured article
 
 ## Next Likely Improvements
 
