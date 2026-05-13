@@ -119,6 +119,7 @@
       <button class="tool-btn" data-tool="hijack"><span class="num">04/</span><span class="t">narrative-hijack<span>timing + response drafts</span></span></button>
       <button class="tool-btn" data-tool="deep-dive"><span class="num">05/</span><span class="t">competitive-deep-dive<span>strategist-grade market brief</span></span></button>
       <button class="tool-btn" data-tool="positioning"><span class="num">06/</span><span class="t">protocol-positioning<span>category angle + messaging</span></span></button>
+      <button class="tool-btn" data-tool="perppulse"><span class="num">07/</span><span class="t">perp-pulse<span>daily perp DEX intel dashboard</span></span></button>
       <div class="readme">
         <div class="rt">README</div>
         <div>This page is a working showcase of the systems behind my day-to-day marketing process. Demos call Claude Haiku in the browser. The full tools run locally or on hosted backends. Source on <a href="https://github.com/Charubak" target="_blank" rel="noopener">github/Charubak</a>.</div>
@@ -243,6 +244,15 @@ const TOOLS = {
     description: "A modular AI content system for Web3 and AI-first brands. It calibrates to voice, generates cross-channel drafts from one brief, and runs every output through a 25-pattern quality gate so it sounds like a specific human, not generic AI.",
     features:["30-45 min voice onboarding into a versioned Voice Document","One brief to LinkedIn long-form, LinkedIn short, X thread, and X single","25-pattern quality gate with rewrite loop on failure","Narrative fast-path, brief queue, review dashboard, Buffer flow"],
     note:"// fully deployed · no backend required",
+  },
+  "perppulse":{
+    title:"perp-pulse",
+    meta:"python · fastapi · sqlite · claude · apscheduler",
+    launch: true,
+    repo: "https://github.com/Charubak/perppulse",
+    description: "Daily competitive intelligence for the top 20 perpetuals DEXs. Ingests protocol blogs, governance posts, X feeds, and GitHub releases, classifies signals with Claude, and surfaces a ranked brief every morning.",
+    features:["20 protocols tracked: Hyperliquid, GMX, dYdX, Jupiter, and more","LLM classification + importance ranking via Claude Haiku","FastAPI dashboard: Today / Threats / 30-Day Calendar / Coverage","Scheduled daily via launchd — runs at 08:00 IST, open manually"],
+    note:"// self-hosted · runs locally · open source",
   },
 };
 
