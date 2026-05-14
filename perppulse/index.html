@@ -18,318 +18,303 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0a0c0a;--bg-2:#11140f;--bg-3:#171a14;
-    --rule:#23281d;--rule-2:#2f3525;
-    --ink:#e4e8d5;--ink-2:#b7bda2;--ink-3:#7d8468;
-    --accent:#c4f542;--accent-2:#ff6a3d;--accent-3:#7ee8c8;
-    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    --sans:"IBM Plex Sans",-apple-system,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:var(--mono);-webkit-font-smoothing:antialiased;font-size:13px;line-height:1.55;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.06;background-image:repeating-linear-gradient(0deg,rgba(196,245,66,.5) 0 1px,transparent 1px 3px);mix-blend-mode:screen}
-  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at 50% 0%,rgba(196,245,66,.06),transparent 60%),radial-gradient(ellipse at 90% 90%,rgba(126,232,200,.04),transparent 60%)}
-
-  .wrap{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:4}
-
-  /* nav */
-  nav{border-bottom:1px solid var(--rule);background:rgba(10,12,10,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
-  nav .row{display:flex;align-items:center;justify-content:space-between;height:56px;font-size:12px;letter-spacing:.06em}
-  .brand{color:var(--accent);font-weight:600;display:flex;align-items:center;gap:10px}
-  .brand::before{content:"❯";color:var(--accent);animation:blink 1.3s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  nav ul{display:flex;gap:20px;list-style:none;text-transform:uppercase;font-size:11px;letter-spacing:.14em}
-  nav ul a{color:var(--ink-2);padding:4px 0;position:relative}
-  nav ul a:hover{color:var(--accent)}
-  nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-  nav ul a:hover::after{transform:scaleX(1)}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule-2);color:var(--ink);transition:all .2s;background:transparent;cursor:pointer;font-family:var(--mono)}
-  .btn:hover{border-color:var(--accent);color:var(--accent)}
-  .btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
-  .btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-
-  /* hero */
-  .hero{padding:72px 0 56px;border-bottom:1px solid var(--rule)}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-  @media(max-width:768px){.hero-grid{grid-template-columns:1fr}}
-  .tag{display:inline-block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-  .hero h1{font-size:clamp(36px,4.5vw,64px);font-weight:500;line-height:1.05;letter-spacing:-.02em;margin-bottom:20px}
-  .hero h1 .hl{color:var(--accent)}
-  .hero p{color:var(--ink-2);font-family:var(--sans);font-size:15px;line-height:1.75;max-width:520px;margin-bottom:28px}
-  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-  .live-dot{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-  .live-dot i{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.5s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--accent)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(196,245,66,0)}}
-
-  /* terminal mock */
-  .terminal{background:var(--bg-2);border:1px solid var(--rule-2);font-size:12px;line-height:1.85}
-  .chrome{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--bg-3)}
-  .dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:var(--rule-2);display:block}
-  .dots i:nth-child(1){background:#ff5f57}.dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
-  .chrome span{color:var(--ink-3);font-size:11px;letter-spacing:.06em}
-  .term-body{padding:18px 20px}
-  .line{margin-bottom:2px}
-  .p{color:var(--accent)}
-  .muted{color:var(--ink-3)}
-  .ok{color:var(--accent)}
-  .warn{color:var(--accent-2)}
-  .section-h{color:var(--accent);font-weight:600;border-bottom:1px solid var(--rule);padding-bottom:4px;margin:12px 0 8px;display:block;letter-spacing:.06em}
-  .rank-1{color:var(--accent-2)}
-  .rank-2{color:var(--ink)}
-  .rank-3{color:var(--ink-2)}
-
-  /* features */
-  .features{padding:64px 0;border-bottom:1px solid var(--rule)}
-  .block-head{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:end;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
-  .block-head h2{font-size:clamp(24px,2.5vw,36px);font-weight:500;letter-spacing:-.015em;line-height:1.15}
-  .block-head .meta{font-size:11px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase;text-align:right}
-  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
-  @media(max-width:768px){.feat-grid{grid-template-columns:1fr}}
-  .feat{background:var(--bg);padding:28px 24px}
-  .feat .num{color:var(--accent);font-size:11px;letter-spacing:.18em;margin-bottom:10px}
-  .feat h4{font-size:15px;font-weight:500;letter-spacing:-.01em;margin-bottom:10px}
-  .feat p{font-size:12px;color:var(--ink-2);font-family:var(--sans);line-height:1.7}
-  .feat ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:5px}
-  .feat ul li{font-size:11px;color:var(--ink-3);letter-spacing:.06em}
-  .feat ul li::before{content:"▸ ";color:var(--accent)}
-
-  /* protocols */
-  .protocols{padding:56px 0;border-bottom:1px solid var(--rule)}
-  .proto-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
-  .proto{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--rule-2);color:var(--ink-3);transition:all .2s}
-  .proto.active{border-color:var(--accent);color:var(--accent);background:rgba(196,245,66,.06)}
-  .proto:hover{border-color:var(--ink-3);color:var(--ink-2)}
-
-  /* stack */
-  .stack{padding:56px 0;border-bottom:1px solid var(--rule)}
-  .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);margin-top:32px}
-  @media(max-width:768px){.stack-grid{grid-template-columns:repeat(2,1fr)}}
-  .stack-item{background:var(--bg);padding:20px;display:flex;flex-direction:column;gap:4px}
-  .stack-item .k{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-3)}
-  .stack-item .v{font-size:13px;color:var(--ink-2)}
-
-  /* footer */
-  footer{padding:40px 0;border-top:1px solid var(--rule)}
-  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-  footer .note{font-size:11px;color:var(--ink-3);letter-spacing:.08em}
-  footer a{color:var(--accent)}
+:root{
+--bg:#0a0c0a;--bg-2:#11140f;--bg-3:#171a14;
+--rule:#23281d;--rule-2:#2f3525;
+--ink:#e4e8d5;--ink-2:#b7bda2;--ink-3:#7d8468;
+--accent:#c4f542;--accent-2:#ff6a3d;--accent-3:#7ee8c8;
+--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+--sans:"IBM Plex Sans",-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--mono);-webkit-font-smoothing:antialiased;font-size:13px;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.06;background-image:repeating-linear-gradient(0deg,rgba(196,245,66,.5) 0 1px,transparent 1px 3px);mix-blend-mode:screen}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(ellipse at 50% 0%,rgba(196,245,66,.06),transparent 60%),radial-gradient(ellipse at 90% 90%,rgba(126,232,200,.04),transparent 60%)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:4}
+nav{border-bottom:1px solid var(--rule);background:rgba(10,12,10,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
+nav .row{display:flex;align-items:center;justify-content:space-between;height:56px;font-size:12px;letter-spacing:.06em}
+.brand{color:var(--accent);font-weight:600;display:flex;align-items:center;gap:10px}
+.brand::before{content:"❯";color:var(--accent);animation:blink 1.3s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+nav ul{display:flex;gap:20px;list-style:none;text-transform:uppercase;font-size:11px;letter-spacing:.14em}
+nav ul a{color:var(--ink-2);padding:4px 0;position:relative}
+nav ul a:hover{color:var(--accent)}
+nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav ul a:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule-2);color:var(--ink);transition:all .2s;background:transparent;cursor:pointer;font-family:var(--mono)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.hero{padding:72px 0 56px;border-bottom:1px solid var(--rule)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero h1{font-size:clamp(36px,4.5vw,64px);font-weight:500;line-height:1.05;letter-spacing:-.02em;margin-bottom:20px}
+.hero h1 .hl{color:var(--accent)}
+.hero p{color:var(--ink-2);font-family:var(--sans);font-size:15px;line-height:1.75;max-width:520px;margin-bottom:28px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.live-dot{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.live-dot i{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--accent)}50%{opacity:.5;box-shadow:0 0 0 6px rgba(196,245,66,0)}}
+.terminal{background:var(--bg-2);border:1px solid var(--rule-2);font-size:12px;line-height:1.85}
+.chrome{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--bg-3)}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:var(--rule-2);display:block}
+.dots i:nth-child(1){background:#ff5f57}.dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
+.chrome span{color:var(--ink-3);font-size:11px;letter-spacing:.06em}
+.term-body{padding:18px 20px}
+.line{margin-bottom:2px}
+.p{color:var(--accent)}
+.muted{color:var(--ink-3)}
+.ok{color:var(--accent)}
+.warn{color:var(--accent-2)}
+.section-h{color:var(--accent);font-weight:600;border-bottom:1px solid var(--rule);padding-bottom:4px;margin:12px 0 8px;display:block;letter-spacing:.06em}
+.rank-1{color:var(--accent-2)}
+.rank-2{color:var(--ink)}
+.rank-3{color:var(--ink-2)}
+.features{padding:64px 0;border-bottom:1px solid var(--rule)}
+.block-head{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:end;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.block-head h2{font-size:clamp(24px,2.5vw,36px);font-weight:500;letter-spacing:-.015em;line-height:1.15}
+.block-head .meta{font-size:11px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase;text-align:right}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
+@media(max-width:768px){.feat-grid{grid-template-columns:1fr}}
+.feat{background:var(--bg);padding:28px 24px}
+.feat .num{color:var(--accent);font-size:11px;letter-spacing:.18em;margin-bottom:10px}
+.feat h4{font-size:15px;font-weight:500;letter-spacing:-.01em;margin-bottom:10px}
+.feat p{font-size:12px;color:var(--ink-2);font-family:var(--sans);line-height:1.7}
+.feat ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:5px}
+.feat ul li{font-size:11px;color:var(--ink-3);letter-spacing:.06em}
+.feat ul li::before{content:"▸ ";color:var(--accent)}
+.protocols{padding:56px 0;border-bottom:1px solid var(--rule)}
+.proto-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.proto{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--rule-2);color:var(--ink-3);transition:all .2s}
+.proto.active{border-color:var(--accent);color:var(--accent);background:rgba(196,245,66,.06)}
+.proto:hover{border-color:var(--ink-3);color:var(--ink-2)}
+.stack{padding:56px 0;border-bottom:1px solid var(--rule)}
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);margin-top:32px}
+@media(max-width:768px){.stack-grid{grid-template-columns:repeat(2,1fr)}}
+.stack-item{background:var(--bg);padding:20px;display:flex;flex-direction:column;gap:4px}
+.stack-item .k{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-3)}
+.stack-item .v{font-size:13px;color:var(--ink-2)}
+footer{padding:40px 0;border-top:1px solid var(--rule)}
+.foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer .note{font-size:11px;color:var(--ink-3);letter-spacing:.08em}
+footer a{color:var(--accent)}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="wrap row">
-    <a class="brand" href="https://web3growthlab.com/">charubak.cc</a>
-    <ul>
-      <li><a href="https://web3growthlab.com/#tools">/tools</a></li>
-      <li><a href="https://web3growthlab.com/tool-studio.html">/studio</a></li>
-      <li><a href="https://web3growthlab.com/resume.html">/cv</a></li>
-    </ul>
-    <div style="display:flex;gap:10px">
-      <a class="btn" href="https://github.com/Charubak/perppulse" target="_blank" rel="noopener">/github</a>
-      <a class="btn primary" href="https://perppulse.fly.dev" target="_blank" rel="noopener">./launch ↗</a>
-    </div>
-  </div>
+<div class="wrap row">
+<a class="brand" href="https://web3growthlab.com/">charubak.cc</a>
+<ul>
+<li><a href="https://web3growthlab.com/#tools">/tools</a></li>
+<li><a href="https://web3growthlab.com/tool-studio.html">/studio</a></li>
+<li><a href="https://web3growthlab.com/resume.html">/cv</a></li>
+</ul>
+<div style="display:flex;gap:10px">
+<a class="btn" href="https://github.com/Charubak/perppulse" target="_blank" rel="noopener">/github</a>
+<a class="btn primary" href="http://140.245.22.72:8080" target="_blank" rel="noopener">./launch ↗</a>
+</div>
+</div>
 </nav>
 
 <!-- hero -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="tag">08/ perp-pulse</div>
-      <h1>Daily intel on<br>every perp DEX<br><span class="hl">that matters.</span></h1>
-      <p>Monitors the top 20 perpetuals protocols across native blogs, governance forums, X, and GitHub releases. Classifies signals with Claude Haiku, ranks by impact, and surfaces a clean brief every morning so nothing slips through.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://perppulse.fly.dev" target="_blank" rel="noopener">./open-dashboard ↗</a>
-        <a class="btn" href="https://github.com/Charubak/perppulse" target="_blank" rel="noopener">/github</a>
-        <a class="btn" href="https://web3growthlab.com/tool-studio.html#perppulse">/studio</a>
-      </div>
-    </div>
+<div class="wrap hero-grid">
+<div>
+<div class="tag">08/ perp-pulse</div>
+<h1>Daily intel on<br>every perp DEX<br><span class="hl">that matters.</span></h1>
+<p>Monitors the top 20 perpetuals protocols across native blogs, governance forums, X, and GitHub releases. Classifies signals with Claude Haiku, ranks by impact, and surfaces a clean brief every morning so nothing slips through.</p>
+<div class="cta-row">
+<a class="btn primary" href="http://140.245.22.72:8080" target="_blank" rel="noopener">./open-dashboard ↗</a>
+<a class="btn" href="https://github.com/Charubak/perppulse" target="_blank" rel="noopener">/github</a>
+<a class="btn" href="https://web3growthlab.com/tool-studio.html#perppulse">/studio</a>
+</div>
+</div>
 
-    <div class="terminal">
-      <div class="chrome">
-        <div class="dots"><i></i><i></i><i></i></div>
-        <span>perppulse · daily-run</span>
-        <span style="color:var(--accent)">● live</span>
-      </div>
-      <div class="term-body">
-        <div class="line"><span class="p">$</span> perppulse daily-run <span class="muted">--project-root /app</span></div>
-        <div class="line muted">   collecting from 20 protocols…</div>
-        <div class="line"><span class="ok">✓</span> hyperliquid · 3 new items</div>
-        <div class="line"><span class="ok">✓</span> gmx · 1 new item</div>
-        <div class="line"><span class="ok">✓</span> dydx · 2 new items</div>
-        <div class="line"><span class="ok">✓</span> jupiter · 1 new item</div>
-        <div class="line muted">   classifying + ranking via claude…</div>
-        <div class="line"><span class="ok">✓</span> 47 items ranked · 6 HIGH impact</div>
-        <br>
-        <div class="line"><span class="section-h">── TODAY'S TOP SIGNALS ──────────</span></div>
-        <div class="line"><span class="rank-1">[9.2] PRODUCT LAUNCH</span> · hyperliquid</div>
-        <div class="line muted">      HIP-3 vault mechanics now live on mainnet</div>
-        <div class="line"><span class="rank-1">[8.7] GOVERNANCE</span> · dydx</div>
-        <div class="line muted">      DIP-22 fee restructure passed — 73% yes</div>
-        <div class="line"><span class="rank-2">[7.1] PARTNERSHIP</span> · gmx</div>
-        <div class="line muted">      GMX × LayerZero cross-chain liquidity announced</div>
-        <div class="line"><span class="rank-3">[5.4] CONTENT</span> · jupiter</div>
-        <div class="line muted">      JLP pool composition updated</div>
-        <br>
-        <div class="line"><span class="p">$</span> <span class="muted">// dashboard at http://127.0.0.1:8000</span><span style="display:inline-block;width:8px;height:12px;background:var(--accent);vertical-align:middle;margin-left:4px;animation:blink 1s steps(1) infinite"></span></div>
-      </div>
-    </div>
-  </div>
+<div class="terminal">
+<div class="chrome">
+<div class="dots"><i></i><i></i><i></i></div>
+<span>perppulse · daily-run</span>
+<span style="color:var(--accent)">● live</span>
+</div>
+<div class="term-body">
+<div class="line"><span class="p">$</span> perppulse daily-run <span class="muted">--project-root /app</span></div>
+<div class="line muted"> collecting from 20 protocols…</div>
+<div class="line"><span class="ok">✓</span> hyperliquid · 3 new items</div>
+<div class="line"><span class="ok">✓</span> gmx · 1 new item</div>
+<div class="line"><span class="ok">✓</span> dydx · 2 new items</div>
+<div class="line"><span class="ok">✓</span> jupiter · 1 new item</div>
+<div class="line muted"> classifying + ranking via claude…</div>
+<div class="line"><span class="ok">✓</span> 47 items ranked · 6 HIGH impact</div>
+<br>
+<div class="line"><span class="section-h">── TODAY'S TOP SIGNALS ──────────</span></div>
+<div class="line"><span class="rank-1">[9.2] PRODUCT LAUNCH</span> · hyperliquid</div>
+<div class="line muted"> HIP-3 vault mechanics now live on mainnet</div>
+<div class="line"><span class="rank-1">[8.7] GOVERNANCE</span> · dydx</div>
+<div class="line muted"> DIP-22 fee restructure passed — 73% yes</div>
+<div class="line"><span class="rank-2">[7.1] PARTNERSHIP</span> · gmx</div>
+<div class="line muted"> GMX × LayerZero cross-chain liquidity announced</div>
+<div class="line"><span class="rank-3">[5.4] CONTENT</span> · jupiter</div>
+<div class="line muted"> JLP pool composition updated</div>
+<br>
+<div class="line"><span class="p">$</span> <span class="muted">// dashboard at http://140.245.22.72:8080</span><span style="display:inline-block;width:8px;height:12px;background:var(--accent);vertical-align:middle;margin-left:4px;animation:blink 1s steps(1) infinite"></span></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- features -->
 <section class="features">
-  <div class="wrap">
-    <div class="block-head">
-      <div>
-        <div class="tag">§ 01 · What it does</div>
-        <h2>// intelligence.<br>not noise.</h2>
-      </div>
-      <div></div>
-      <div class="meta">python · fastapi · claude · sqlite</div>
-    </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="num">01/</div>
-        <h4>Multi-source collection</h4>
-        <p>Pulls from protocol-native blogs, governance forums, docs changelogs, X feeds, GitHub releases, and RSS every day.</p>
-        <ul>
-          <li>20 protocols, 60+ source URLs</li>
-          <li>Medium, Substack, native blogs</li>
-          <li>GitHub release notes</li>
-          <li>DefiLlama volume data</li>
-        </ul>
-      </div>
-      <div class="feat">
-        <div class="num">02/</div>
-        <h4>LLM classification + ranking</h4>
-        <p>Claude Haiku classifies each item by category and scores it 1–10 on impact. Falls back to heuristic scoring without an API key.</p>
-        <ul>
-          <li>Categories: product, governance, partnership, content</li>
-          <li>Impact score 1–10 per item</li>
-          <li>Deduplication across sources</li>
-          <li>Age labels (today / 2d / 1w)</li>
-        </ul>
-      </div>
-      <div class="feat">
-        <div class="num">03/</div>
-        <h4>Dashboard + daily brief</h4>
-        <p>FastAPI + Jinja2 dashboard with five tabs. Open manually after the scheduled morning run.</p>
-        <ul>
-          <li>Today — ranked feed</li>
-          <li>Campaigns &amp; Launches</li>
-          <li>Threat Board</li>
-          <li>30-Day Calendar</li>
-          <li>Coverage — source health</li>
-        </ul>
-      </div>
-      <div class="feat">
-        <div class="num">04/</div>
-        <h4>Scheduled daily run</h4>
-        <p>Runs at 08:00 IST via macOS launchd (or on server via APScheduler). One command to trigger manually.</p>
-        <ul>
-          <li>launchd plist included</li>
-          <li>APScheduler for server deploys</li>
-          <li>Logs to data/run_logs/</li>
-        </ul>
-      </div>
-      <div class="feat">
-        <div class="num">05/</div>
-        <h4>Open source</h4>
-        <p>Full source on GitHub. MIT license. Self-host locally or deploy to Fly.io with the included Dockerfile and fly.toml.</p>
-        <ul>
-          <li>Python 3.12+, editable install</li>
-          <li>SQLite — zero config DB</li>
-          <li>Docker + Fly.io ready</li>
-          <li>15 tests, fully green</li>
-        </ul>
-      </div>
-      <div class="feat">
-        <div class="num">06/</div>
-        <h4>Why I built it</h4>
-        <p>Working in perp DEX marketing means knowing every move every competitor makes. Manual tab-checking is how signals get missed. This replaces that.</p>
-        <ul>
-          <li>Built for perp-DEX marketing leads</li>
-          <li>No SaaS subscriptions</li>
-          <li>Runs overnight, read in the morning</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="block-head">
+<div>
+<div class="tag">§ 01 · What it does</div>
+<h2>// intelligence.<br>not noise.</h2>
+</div>
+<div></div>
+<div class="meta">python · fastapi · claude · sqlite</div>
+</div>
+<div class="feat-grid">
+<div class="feat">
+<div class="num">01/</div>
+<h4>Multi-source collection</h4>
+<p>Pulls from protocol-native blogs, governance forums, docs changelogs, X feeds, GitHub releases, and RSS every day.</p>
+<ul>
+<li>20 protocols, 60+ source URLs</li>
+<li>Medium, Substack, native blogs</li>
+<li>GitHub release notes</li>
+<li>DefiLlama volume data</li>
+</ul>
+</div>
+<div class="feat">
+<div class="num">02/</div>
+<h4>LLM classification + ranking</h4>
+<p>Claude Haiku classifies each item by category and scores it 1–10 on impact. Falls back to heuristic scoring without an API key.</p>
+<ul>
+<li>Categories: product, governance, partnership, content</li>
+<li>Impact score 1–10 per item</li>
+<li>Deduplication across sources</li>
+<li>Age labels (today / 2d / 1w)</li>
+</ul>
+</div>
+<div class="feat">
+<div class="num">03/</div>
+<h4>Dashboard + daily brief</h4>
+<p>FastAPI + Jinja2 dashboard with five tabs. Open manually after the scheduled morning run.</p>
+<ul>
+<li>Today — ranked feed</li>
+<li>Campaigns &amp; Launches</li>
+<li>Threat Board</li>
+<li>30-Day Calendar</li>
+<li>Coverage — source health</li>
+</ul>
+</div>
+<div class="feat">
+<div class="num">04/</div>
+<h4>Scheduled daily run</h4>
+<p>Runs at 08:00 IST via macOS launchd (or on server via APScheduler). One command to trigger manually.</p>
+<ul>
+<li>launchd plist included</li>
+<li>APScheduler for server deploys</li>
+<li>Logs to data/run_logs/</li>
+</ul>
+</div>
+<div class="feat">
+<div class="num">05/</div>
+<h4>Open source</h4>
+<p>Full source on GitHub. MIT license. Self-host locally or deploy to Fly.io with the included Dockerfile and fly.toml.</p>
+<ul>
+<li>Python 3.12+, editable install</li>
+<li>SQLite — zero config DB</li>
+<li>Docker + Fly.io ready</li>
+<li>15 tests, fully green</li>
+</ul>
+</div>
+<div class="feat">
+<div class="num">06/</div>
+<h4>Why I built it</h4>
+<p>Working in perp DEX marketing means knowing every move every competitor makes. Manual tab-checking is how signals get missed. This replaces that.</p>
+<ul>
+<li>Built for perp-DEX marketing leads</li>
+<li>No SaaS subscriptions</li>
+<li>Runs overnight, read in the morning</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 
 <!-- protocols -->
 <section class="protocols">
-  <div class="wrap">
-    <div class="block-head" style="border-bottom:none;margin-bottom:0;padding-bottom:0">
-      <div>
-        <div class="tag">§ 02 · Coverage</div>
-        <h2>// 20 protocols<br>tracked daily</h2>
-      </div>
-      <div></div>
-      <div class="meta">top 20 by 30d volume</div>
-    </div>
-    <div class="proto-grid">
-      <span class="proto active">Hyperliquid</span>
-      <span class="proto active">GMX</span>
-      <span class="proto active">dYdX</span>
-      <span class="proto active">Jupiter</span>
-      <span class="proto active">Lighter</span>
-      <span class="proto active">Grvt</span>
-      <span class="proto active">ApeX</span>
-      <span class="proto active">Aster</span>
-      <span class="proto active">Evedex</span>
-      <span class="proto active">StandX</span>
-      <span class="proto active">Extended</span>
-      <span class="proto active">MYX Finance</span>
-      <span class="proto active">PriveX</span>
-      <span class="proto active">Nado</span>
-      <span class="proto active">Antarctic</span>
-      <span class="proto active">Rho Markets</span>
-      <span class="proto">+ events / campaigns</span>
-      <span class="proto">+ GitHub releases</span>
-      <span class="proto">+ governance forums</span>
-      <span class="proto">+ X / social feeds</span>
-    </div>
-  </div>
+<div class="wrap">
+<div class="block-head" style="border-bottom:none;margin-bottom:0;padding-bottom:0">
+<div>
+<div class="tag">§ 02 · Coverage</div>
+<h2>// 20 protocols<br>tracked daily</h2>
+</div>
+<div></div>
+<div class="meta">top 20 by 30d volume</div>
+</div>
+<div class="proto-grid">
+<span class="proto active">Hyperliquid</span>
+<span class="proto active">GMX</span>
+<span class="proto active">dYdX</span>
+<span class="proto active">Jupiter</span>
+<span class="proto active">Lighter</span>
+<span class="proto active">Grvt</span>
+<span class="proto active">ApeX</span>
+<span class="proto active">Aster</span>
+<span class="proto active">Evedex</span>
+<span class="proto active">StandX</span>
+<span class="proto active">Extended</span>
+<span class="proto active">MYX Finance</span>
+<span class="proto active">PriveX</span>
+<span class="proto active">Nado</span>
+<span class="proto active">Antarctic</span>
+<span class="proto active">Rho Markets</span>
+<span class="proto">+ events / campaigns</span>
+<span class="proto">+ GitHub releases</span>
+<span class="proto">+ governance forums</span>
+<span class="proto">+ X / social feeds</span>
+</div>
+</div>
 </section>
 
 <!-- stack -->
 <section class="stack">
-  <div class="wrap">
-    <div class="block-head" style="border-bottom:none;margin-bottom:0;padding-bottom:0">
-      <div>
-        <div class="tag">§ 03 · Stack</div>
-        <h2>// how it's built</h2>
-      </div>
-    </div>
-    <div class="stack-grid">
-      <div class="stack-item"><span class="k">language</span><span class="v">Python 3.12</span></div>
-      <div class="stack-item"><span class="k">web</span><span class="v">FastAPI + Jinja2</span></div>
-      <div class="stack-item"><span class="k">database</span><span class="v">SQLAlchemy + SQLite</span></div>
-      <div class="stack-item"><span class="k">ai</span><span class="v">Claude Haiku 4.5</span></div>
-      <div class="stack-item"><span class="k">scheduler</span><span class="v">APScheduler + launchd</span></div>
-      <div class="stack-item"><span class="k">http</span><span class="v">httpx + feedparser</span></div>
-      <div class="stack-item"><span class="k">deploy</span><span class="v">Fly.io (Singapore)</span></div>
-      <div class="stack-item"><span class="k">license</span><span class="v">MIT</span></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="block-head" style="border-bottom:none;margin-bottom:0;padding-bottom:0">
+<div>
+<div class="tag">§ 03 · Stack</div>
+<h2>// how it's built</h2>
+</div>
+</div>
+<div class="stack-grid">
+<div class="stack-item"><span class="k">language</span><span class="v">Python 3.12</span></div>
+<div class="stack-item"><span class="k">web</span><span class="v">FastAPI + Jinja2</span></div>
+<div class="stack-item"><span class="k">database</span><span class="v">SQLAlchemy + SQLite</span></div>
+<div class="stack-item"><span class="k">ai</span><span class="v">Claude Haiku 4.5</span></div>
+<div class="stack-item"><span class="k">scheduler</span><span class="v">APScheduler + launchd</span></div>
+<div class="stack-item"><span class="k">http</span><span class="v">httpx + feedparser</span></div>
+<div class="stack-item"><span class="k">deploy</span><span class="v">Oracle Cloud (Mumbai)</span></div>
+<div class="stack-item"><span class="k">license</span><span class="v">MIT</span></div>
+</div>
+</div>
 </section>
 
 <!-- footer -->
 <footer>
-  <div class="wrap">
-    <div class="foot-row">
-      <span class="note">perppulse · built by <a href="https://web3growthlab.com/">charubak</a> · MIT license</span>
-      <div style="display:flex;gap:10px">
-        <a class="btn" href="https://github.com/Charubak/perppulse" target="_blank" rel="noopener">/github</a>
-        <a class="btn primary" href="https://perppulse.fly.dev" target="_blank" rel="noopener">./launch ↗</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="foot-row">
+<span class="note">perppulse · built by <a href="https://web3growthlab.com/">charubak</a> · MIT license</span>
+<div style="display:flex;gap:10px">
+<a class="btn" href="https://github.com/Charubak/perppulse" target="_blank" rel="noopener">/github</a>
+<a class="btn primary" href="http://140.245.22.72:8080" target="_blank" rel="noopener">./launch ↗</a>
+</div>
+</div>
+</div>
 </footer>
 
 </body>
