@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KOL Engine · X Influencer Intelligence & ROI for Web3 · Charubak Chakrabarti</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Vet X (Twitter) KOLs across every Web3 vertical - perps, DeFi, lending, RWA, stablecoins, prediction markets and more - then track real CAC per influencer with ref-link attribution. Built by Charubak Chakrabarti.">
+<meta name="author" content="Charubak Chakrabarti">
+<link rel="canonical" href="https://web3growthlab.com/kol-engine/">
+<meta property="og:title" content="KOL Engine · X Influencer Intelligence & ROI for Web3">
+<meta property="og:description" content="Score KOLs on engagement authenticity, niche fit, and shill density. Then measure CAC per influencer instead of guessing.">
+<meta property="og:url" content="https://web3growthlab.com/kol-engine/">
+<meta property="og:image" content="https://web3growthlab.com/assets/charubak-portrait.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@thedeludedbull">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" onerror="this.remove()">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0a0c0a;--bg-2:#11140f;--bg-3:#171a14;
+--rule:#23281d;--rule-2:#2f3525;
+--ink:#e4e8d5;--ink-2:#b7bda2;--ink-3:#7d8468;
+--accent:#c4f542;--accent-2:#ff6a3d;--accent-3:#7ee8c8;
+--red:#ff5d5d;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+--sans:"IBM Plex Sans",-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.05;background-image:repeating-linear-gradient(0deg,rgba(196,245,66,.5) 0 1px,transparent 1px 3px)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;position:relative;z-index:4}
+.top{border-bottom:1px solid var(--rule);padding:13px 0;background:var(--bg-2);position:sticky;top:0;z-index:20;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.top .row{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.top a:hover{color:var(--accent)}
+.top .links{display:flex;gap:18px}
+.head{padding:42px 0 10px}
+.head .pre{color:var(--accent);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.head h1{font-size:clamp(34px,5vw,68px);line-height:1.02;font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
+.head h1 .hl{color:var(--accent)}
+.head .lead{color:var(--ink-2);font-family:var(--sans);font-size:14.5px;max-width:760px;line-height:1.75}
+.modebar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 6px;padding:12px 16px;background:var(--bg-2);border:1px solid var(--rule-2)}
+.badge{font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule-2)}
+.badge.demo{color:var(--accent-2);border-color:rgba(255,106,61,.4)}
+.badge.live{color:var(--accent);border-color:rgba(196,245,66,.4)}
+.modebar input{flex:1;min-width:200px;background:var(--bg-3);border:1px solid var(--rule-2);color:var(--ink);font-family:var(--mono);font-size:12px;padding:8px 12px;outline:none}
+.modebar input:focus{border-color:var(--accent)}
+.modebar button{background:none;border:1px solid var(--accent);color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;cursor:pointer}
+.modebar button:hover{background:rgba(196,245,66,.1)}
+.modebar .note{font-size:10.5px;color:var(--ink-3);width:100%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:22px 0}
+.stat{background:var(--bg-2);padding:16px 18px}
+.stat .v{font-size:26px;font-weight:600;color:var(--accent)}
+.stat .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:4px}
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--rule-2);margin:26px 0 0;flex-wrap:wrap}
+.tab{padding:12px 22px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);cursor:pointer;border:1px solid transparent;border-bottom:none}
+.tab.on{color:var(--accent);background:var(--bg-2);border-color:var(--rule-2)}
+.pane{display:none;padding:26px 0 60px}
+.pane.on{display:block}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.pill{font-size:10.5px;letter-spacing:.06em;padding:6px 12px;border:1px solid var(--rule-2);color:var(--ink-2);cursor:pointer;background:var(--bg-2)}
+.pill.on{color:var(--bg);background:var(--accent);border-color:var(--accent);font-weight:600}
+.search{margin-left:auto;background:var(--bg-3);border:1px solid var(--rule-2);color:var(--ink);font-family:var(--mono);font-size:12px;padding:8px 12px;outline:none;min-width:220px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule-2);cursor:pointer;user-select:none;white-space:nowrap}
+th .arr{color:var(--accent)}
+td{padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:middle}
+tr.k:hover{background:var(--bg-2);cursor:pointer}
+.hdl{color:var(--ink);font-weight:600}
+.hdl small{display:block;color:var(--ink-3);font-weight:400}
+.vchip{display:inline-block;font-size:9.5px;letter-spacing:.05em;padding:2px 8px;border:1px solid var(--rule-2);color:var(--ink-2);margin:1px 3px 1px 0;white-space:nowrap}
+.bar{position:relative;background:var(--bg-3);height:7px;width:90px;display:inline-block;vertical-align:middle;margin-right:8px}
+.bar i{position:absolute;inset:0;right:auto;background:var(--accent)}
+.bar.warn i{background:var(--accent-2)}
+.num{font-weight:600}
+.scorebig{color:var(--accent);font-size:15px;font-weight:700}
+.drawer{position:fixed;top:0;right:-560px;width:min(560px,100vw);height:100vh;background:var(--bg-2);border-left:1px solid var(--rule-2);z-index:40;transition:right .3s cubic-bezier(.16,1,.3,1);overflow-y:auto;padding:28px}
+.drawer.open{right:0}
+.drawer .close{float:right;color:var(--ink-3);cursor:pointer;font-size:18px;padding:4px 10px;border:1px solid var(--rule-2)}
+.drawer h2{font-size:22px;margin-bottom:2px}
+.drawer .sub{color:var(--ink-3);font-size:11px;margin-bottom:18px}
+.scoregrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:16px 0}
+.scoregrid .cell{background:var(--bg-3);padding:14px}
+.scoregrid .cell .v{font-size:22px;font-weight:700;color:var(--accent)}
+.scoregrid .cell.warn .v{color:var(--accent-2)}
+.scoregrid .cell .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.sec-h{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:20px 0 8px}
+.drawer p,.pane p.body{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.7}
+.flag{color:var(--accent-2);font-family:var(--sans);font-size:13px;padding:6px 0;border-bottom:1px dashed var(--rule-2)}
+.formrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.formrow input,.formrow select{background:var(--bg-3);border:1px solid var(--rule-2);color:var(--ink);font-family:var(--mono);font-size:12.5px;padding:10px 14px;outline:none}
+.formrow input:focus{border-color:var(--accent)}
+.formrow input.grow{flex:1;min-width:220px}
+.btn{background:var(--accent);border:none;color:#0a0c0a;font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.vert-picks{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px}
+.muted{color:var(--ink-3);font-size:11px}
+.result-card{border:1px solid var(--rule-2);background:var(--bg-2);padding:22px;margin-top:18px}
+.roi-note{font-family:var(--sans);font-size:13px;color:var(--ink-3);margin:10px 0 16px;max-width:720px;line-height:1.7}
+.best{color:var(--accent);font-weight:700}
+.worst{color:var(--red);font-weight:700}
+.how{max-width:780px}
+.how h3{font-size:15px;color:var(--ink);margin:24px 0 8px}
+.how p,.how li{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);line-height:1.75}
+.how ul{padding-left:20px;margin:8px 0}
+.how code{background:var(--bg-3);border:1px solid var(--rule);padding:1px 7px;font-size:12px}
+.cost{border:1px solid var(--rule-2);background:var(--bg-2);padding:16px 20px;margin:14px 0}
+footer{border-top:1px solid var(--rule);padding:26px 0 40px;color:var(--ink-3);font-size:11px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer a{color:var(--ink-2);border-bottom:1px dotted var(--rule-2)}
+footer a:hover{color:var(--accent)}
+@media(max-width:720px){.drawer{width:100vw}.search{min-width:140px;margin-left:0}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap row">
+  <div><a href="https://web3growthlab.com/">← web3growthlab.com</a></div>
+  <div class="links"><a href="https://web3growthlab.com/#tools">/tools</a><a href="https://web3growthlab.com/tool-studio.html">/studio</a><a href="https://github.com/Charubak/kol-engine" target="_blank" rel="noopener">/repo ↗</a></div>
+</div></div>
+
+<div class="wrap">
+  <div class="head">
+    <div class="pre">X KOL INTELLIGENCE · EVERY WEB3 VERTICAL</div>
+    <h1>Stop buying followers.<br>Start buying <span class="hl">conversions.</span></h1>
+    <p class="lead">KOL Engine vets X (Twitter) influencers across every Web3 vertical - perps, spot DEXs, lending and borrowing, RWA, stablecoins, prediction markets, restaking, infra, AI, wallets, gaming and general crypto - scoring engagement authenticity, niche fit, and shill density. Then it closes the loop: unique ref links per KOL, so every placement reports clicks, signups, activations, and real CAC. The most expensive channel in crypto, finally measured.</p>
+  </div>
+
+  <div class="modebar">
+    <span class="badge demo" id="modeBadge">SYNTHETIC DEMO DATA</span>
+    <input id="apiBase" type="text" placeholder="http://localhost:8400 - connect your local backend for live mode" spellcheck="false">
+    <button id="connectBtn">Connect</button>
+    <span class="note" id="modeNote">Demo mode: every account below is fictional. Run the backend (<code>uvicorn main:app --port 8400</code> from the <a href="https://github.com/Charubak/kol-engine" target="_blank" rel="noopener" style="color:var(--accent)">repo</a>) and connect to vet real handles.</span>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="tabs">
+    <div class="tab on" data-pane="rankings">Rankings</div>
+    <div class="tab" data-pane="vet">Vet a KOL</div>
+    <div class="tab" data-pane="roi">Campaign ROI</div>
+    <div class="tab" data-pane="how">How it works</div>
+  </div>
+
+  <div class="pane on" id="pane-rankings">
+    <div class="filters" id="vertFilters"></div>
+    <div class="filters"><span class="muted">Click any row for the full vetting card.</span><input class="search" id="search" placeholder="search handle…"></div>
+    <table id="rankTable">
+      <thead><tr>
+        <th data-s="handle">KOL</th><th data-s="followers">Followers</th><th>Verticals</th>
+        <th data-s="composite_score">Composite <span class="arr">▾</span></th>
+        <th data-s="engagement_auth">Authenticity</th><th data-s="niche_fit">Niche fit</th>
+        <th data-s="shill_density">Shill density</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="pane" id="pane-vet">
+    <p class="body" style="max-width:720px;margin-bottom:18px">Type an X handle, pick the verticals your campaign targets, and the engine pulls recent posts, runs the heuristics, and (with a Claude key on the backend) writes the vetting summary, red flags, and an outreach brief in plain language.</p>
+    <div class="formrow"><input class="grow" id="vetHandle" placeholder="@handle" spellcheck="false"><button class="btn" id="vetBtn">Vet account</button></div>
+    <div class="muted">Target verticals:</div>
+    <div class="vert-picks" id="vetVerts"></div>
+    <div id="vetResult"></div>
+  </div>
+
+  <div class="pane" id="pane-roi">
+    <p class="roi-note">Each placement gets a unique ref link. Clicks, signups, and activations are logged against it, so cost per KOL becomes CAC per KOL. The demo below shows why this matters: the biggest account in the campaign is the <span class="worst">worst</span> money you can spend, and a 8K-follower micro account is the <span class="best">best</span>.</p>
+    <div id="roiWrap"></div>
+  </div>
+
+  <div class="pane how" id="pane-how">
+    <h3>The pipeline</h3>
+    <p>Watchlist → pull recent posts per handle → heuristic scoring (engagement rate vs views, reply ratio, volatility, promo share) → Claude analysis chain (vertical classification across 14 verticals, authenticity summary, red flags, outreach brief) → SQLite database → this dashboard. When a campaign goes live, ref links route through <code>/r/&lt;code&gt;</code>, log the click, and redirect to your signup page. Signup and activation webhooks complete the funnel.</p>
+    <h3>What the scores mean</h3>
+    <ul>
+      <li><b>Engagement authenticity (0-100):</b> are the numbers real conversation or bought reach - engagement per view, reply-to-like ratio, and spike volatility.</li>
+      <li><b>Niche fit (0-100):</b> does this account actually talk to your vertical's audience, scored against the campaign's target verticals.</li>
+      <li><b>Shill density (0-100, lower is better):</b> share of recent posts that are paid placements. Audiences stop listening past a threshold.</li>
+      <li><b>Composite:</b> 45% authenticity, 30% niche fit, 25% inverse shill density.</li>
+    </ul>
+    <h3>Data sources and real costs</h3>
+    <div class="cost">
+      <p><b>Official X API (pay-per-use, 2026):</b> ~$0.005 per post read. Vetting one account on 200 posts ≈ <b>$1</b>. A 50-account vetting sprint ≈ <b>$50</b>. No subscription needed.</p>
+      <p style="margin-top:8px"><b>twitterapi.io adapter:</b> third-party data at roughly 5-10x cheaper for bulk monitoring.</p>
+      <p style="margin-top:8px"><b>CSV import:</b> zero cost - paste/export posts manually for shortlists.</p>
+      <p style="margin-top:8px"><b>Attribution half:</b> completely free. Ref links + your own analytics. No X API involved.</p>
+    </div>
+    <h3>Run it yourself</h3>
+    <ul>
+      <li><code>git clone https://github.com/Charubak/kol-engine && cd kol-engine</code></li>
+      <li><code>pip install -r requirements.txt && cp .env.example .env</code></li>
+      <li><code>python scripts/seed_demo.py</code> (optional demo data)</li>
+      <li><code>uvicorn main:app --port 8400</code> → open <code>http://localhost:8400</code></li>
+    </ul>
+    <p style="margin-top:14px">Built by <a href="https://web3growthlab.com" style="color:var(--accent)">Charubak Chakrabarti</a> - the same attribution thinking behind 70K+ closed-alpha signups at RFX and 2,500+ quants onboarded at Autonity.</p>
+  </div>
+</div>
+
+<div class="drawer" id="drawer"></div>
+
+<div class="wrap"><footer>
+  <div>KOL ENGINE · part of <a href="https://web3growthlab.com">Web3 Growth Lab</a></div>
+  <div><a href="https://github.com/Charubak/kol-engine" target="_blank" rel="noopener">github.com/Charubak/kol-engine</a> · <a href="https://x.com/thedeludedbull" target="_blank" rel="noopener">@thedeludedbull</a></div>
+</footer></div>
+
+<script src="demo-data.js"></script>
+<script>
+(function(){
+"use strict";
+let API = null;                       // null => demo mode
+let KOLS = [], CAMPAIGNS = [], PLACEMENTS = [], VERTS = {};
+let sortKey = "composite_score", sortDir = -1, vertFilter = "all", q = "";
+
+const FALLBACK_VERTS = {"perps":"Perpetuals & derivatives","spot-dex":"Spot DEXs & aggregation","lending-borrowing":"Lending & borrowing","rwa":"Real-world assets","stablecoins":"Stablecoins & payments","prediction-markets":"Prediction markets","yield-restaking":"Yield & restaking","l1-l2-infra":"L1/L2 & infra","ai-crypto":"AI x crypto","wallets":"Wallets & onboarding","gaming-nft":"Gaming & NFT","security":"Security","macro-research":"Macro & research","general":"General crypto"};
+
+function el(s){return document.querySelector(s)}
+function els(s){return [...document.querySelectorAll(s)]}
+function esc(x){const d=document.createElement('div');d.textContent=x==null?'':String(x);return d.innerHTML}
+
+function loadDemo(){
+  const D = window.KOL_DEMO || {kols:[],campaigns:[],placements:[]};
+  KOLS = D.kols; CAMPAIGNS = D.campaigns; PLACEMENTS = D.placements; VERTS = FALLBACK_VERTS;
+  render();
+}
+
+async function connect(base){
+  base = (base||"").trim().replace(/\/+$/,"");
+  if(!base){return}
+  try{
+    const h = await fetch(base+"/api/health").then(r=>r.json());
+    API = base;
+    VERTS = await fetch(base+"/api/verticals").then(r=>r.json()).catch(()=>FALLBACK_VERTS);
+    KOLS = await fetch(base+"/api/kols").then(r=>r.json()).catch(()=>[]);
+    PLACEMENTS = await fetch(base+"/api/roi").then(r=>r.json()).catch(()=>[]);
+    CAMPAIGNS = await fetch(base+"/api/campaigns").then(r=>r.json()).catch(()=>[]);
+    el("#modeBadge").textContent = "LIVE BACKEND"; el("#modeBadge").className = "badge live";
+    el("#modeNote").innerHTML = "Connected to <b>"+esc(base)+"</b> · Claude chain: "+(h.claude?"on":"off")+" · X official: "+(h.x_official?"on":"off")+" · twitterapi.io: "+(h.twitterapi_io?"on":"off");
+    render();
+  }catch(e){
+    el("#modeNote").innerHTML = "<span style='color:var(--accent-2)'>Could not reach "+esc(base)+" - staying in demo mode.</span> Is the backend running?";
+  }
+}
+
+function stats(){
+  const n = KOLS.length;
+  const verts = new Set(); KOLS.forEach(k=>(k.verticals||[]).forEach(v=>verts.add(v)));
+  const placed = PLACEMENTS.filter(p=>p.cac_signup);
+  const best = placed.length ? placed.reduce((a,b)=>a.cac_signup<b.cac_signup?a:b) : null;
+  const spend = PLACEMENTS.reduce((s,p)=>s+(p.cost_usd||0),0);
+  el("#stats").innerHTML =
+    st(n,"KOLs scored")+st(verts.size||Object.keys(VERTS).length,"verticals covered")+
+    st(CAMPAIGNS.length,"campaigns tracked")+st(spend?("$"+spend.toLocaleString()):"–","spend attributed")+
+    st(best?("$"+best.cac_signup):"–","best CAC / signup"+(best?(" (@"+best.handle+")"):""));
+  function st(v,k){return '<div class="stat"><div class="v">'+esc(v)+'</div><div class="k">'+esc(k)+'</div></div>'}
+}
+
+function vertPills(){
+  const c = el("#vertFilters");
+  c.innerHTML = '<span class="pill'+(vertFilter==='all'?' on':'')+'" data-v="all">all verticals</span>'+
+    Object.keys(VERTS).map(v=>'<span class="pill'+(vertFilter===v?' on':'')+'" data-v="'+v+'">'+esc(v)+'</span>').join("");
+  els("#vertFilters .pill").forEach(p=>p.onclick=()=>{vertFilter=p.dataset.v;renderTable();vertPills();});
+}
+
+function bar(v,warn){return '<span class="bar'+(warn?' warn':'')+'"><i style="width:'+Math.min(100,Math.max(2,v))+'%"></i></span><span class="num">'+v+'</span>'}
+
+function renderTable(){
+  let rows = KOLS.filter(k=>vertFilter==="all"||(k.verticals||[]).includes(vertFilter));
+  if(q) rows = rows.filter(k=>(k.handle+" "+(k.display_name||"")).toLowerCase().includes(q));
+  rows.sort((a,b)=>{const x=a[sortKey],y=b[sortKey];return (x<y?-1:x>y?1:0)*sortDir});
+  el("#rankTable tbody").innerHTML = rows.map(k=>
+    '<tr class="k" data-h="'+esc(k.handle)+'">'+
+    '<td class="hdl">@'+esc(k.handle)+'<small>'+esc(k.display_name||"")+'</small></td>'+
+    '<td>'+Number(k.followers||0).toLocaleString()+'</td>'+
+    '<td>'+(k.verticals||[]).map(v=>'<span class="vchip">'+esc(v)+'</span>').join("")+'</td>'+
+    '<td><span class="scorebig">'+k.composite_score+'</span></td>'+
+    '<td>'+bar(k.engagement_auth)+'</td>'+
+    '<td>'+bar(k.niche_fit)+'</td>'+
+    '<td>'+bar(k.shill_density,true)+'</td></tr>').join("") ||
+    '<tr><td colspan="7" class="muted" style="padding:30px">No vetted KOLs yet'+(API?' - vet your first handle in the Vet tab.':'')+'</td></tr>';
+  els("#rankTable tr.k").forEach(tr=>tr.onclick=()=>openDrawer(tr.dataset.h));
+}
+
+function openDrawer(h){
+  const k = KOLS.find(x=>x.handle===h); if(!k) return;
+  const d = el("#drawer");
+  d.innerHTML = '<span class="close" id="dClose">×</span>'+
+    '<h2>@'+esc(k.handle)+'</h2><div class="sub">'+esc(k.display_name||"")+' · '+Number(k.followers||0).toLocaleString()+' followers · vetted '+esc((k.last_vetted_at||"").slice(0,10))+(k.source==='demo'?' · <b style="color:var(--accent-2)">SYNTHETIC DEMO PROFILE</b>':'')+'</div>'+
+    '<div class="scoregrid">'+
+      cell(k.composite_score,"Composite score")+cell(k.engagement_auth,"Engagement authenticity")+
+      cell(k.niche_fit,"Niche fit")+cell(k.shill_density,"Shill density (lower = better)",k.shill_density>25)+
+      cell((k.avg_engagement_rate*100).toFixed(2)+"%","Avg engagement / view")+cell(k.cadence_per_week,"Posts / week")+
+    '</div>'+
+    '<div class="sec-h">Verticals</div><div>'+(k.verticals||[]).map(v=>'<span class="vchip">'+esc(v)+'</span>').join("")+'</div>'+
+    '<div class="sec-h">Vetting summary</div><p>'+esc(k.ai_summary||"No AI summary (heuristics only).")+'</p>'+
+    '<div class="sec-h">Red flags</div>'+((k.red_flags&&k.red_flags.length)?k.red_flags.map(f=>'<div class="flag">⚠ '+esc(f)+'</div>').join(""):'<p class="muted">None detected.</p>');
+  d.classList.add("open");
+  el("#dClose").onclick=()=>d.classList.remove("open");
+  function cell(v,kk,warn){return '<div class="cell'+(warn?' warn':'')+'"><div class="v">'+esc(v)+'</div><div class="k">'+esc(kk)+'</div></div>'}
+}
+
+function vetVertPicks(){
+  el("#vetVerts").innerHTML = Object.keys(VERTS).map(v=>'<span class="pill" data-v="'+v+'">'+esc(v)+'</span>').join("");
+  els("#vetVerts .pill").forEach(p=>p.onclick=()=>p.classList.toggle("on"));
+}
+
+async function vet(){
+  const h = el("#vetHandle").value.trim().replace(/^@/,"");
+  if(!h){return}
+  const targets = els("#vetVerts .pill.on").map(p=>p.dataset.v);
+  const out = el("#vetResult");
+  if(!API){
+    const pick = KOLS[[...h].reduce((s,c)=>s+c.charCodeAt(0),0)%KOLS.length];
+    out.innerHTML = '<div class="result-card"><div class="badge demo" style="display:inline-block;margin-bottom:12px">DEMO MODE - SYNTHETIC RESULT</div>'+
+      '<p class="body" style="margin-bottom:10px">Live vetting needs the backend (it pulls real posts for @'+esc(h)+' and runs the scoring chain). In demo mode, here is what a finished vetting card looks like, using the synthetic profile <b>@'+esc(pick.handle)+'</b>:</p></div>';
+    openDrawer(pick.handle);
+    return;
+  }
+  out.innerHTML = '<div class="result-card"><span class="muted">Pulling posts and scoring @'+esc(h)+'… (10-30s with the Claude chain)</span></div>';
+  try{
+    const r = await fetch(API+"/api/vet",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({handle:h,target_verticals:targets.length?targets:null})});
+    if(!r.ok){throw new Error((await r.json()).detail||r.status)}
+    const j = await r.json();
+    KOLS = await fetch(API+"/api/kols").then(r=>r.json());
+    renderTable(); stats();
+    out.innerHTML = '<div class="result-card"><b style="color:var(--accent)">@'+esc(j.handle)+' vetted</b> · '+j.posts_analyzed+' posts via '+esc(j.source)+
+      (j.outreach_brief?('<div class="sec-h">Outreach brief</div><p class="body">'+esc(j.outreach_brief)+'</p>'):'')+'</div>';
+    openDrawer(j.handle);
+  }catch(e){
+    out.innerHTML = '<div class="result-card"><span style="color:var(--accent-2)">Vetting failed: '+esc(e.message)+'</span></div>';
+  }
+}
+
+function renderROI(){
+  const w = el("#roiWrap");
+  if(!PLACEMENTS.length){w.innerHTML='<p class="muted">No campaigns yet'+(API?' - create one via POST /api/campaigns, add placements, and ref links start tracking.':'')+'</p>';return}
+  const rows=[...PLACEMENTS].sort((a,b)=>(a.cac_signup??1e9)-(b.cac_signup??1e9));
+  const best=rows[0], worst=[...rows].reverse().find(r=>r.cac_signup);
+  w.innerHTML='<table><thead><tr><th>KOL</th><th>Campaign</th><th>Cost</th><th>Clicks</th><th>Signups</th><th>Activations</th><th>Click→Signup</th><th>CAC / signup</th><th>CAC / activation</th></tr></thead><tbody>'+
+    rows.map(p=>'<tr class="k"><td class="hdl">@'+esc(p.handle)+'</td><td class="muted">'+esc(p.campaign_name||p.campaign_id)+'</td>'+
+    '<td>$'+Number(p.cost_usd).toLocaleString()+'</td><td>'+Number(p.clicks).toLocaleString()+'</td><td>'+p.signups+'</td><td>'+p.activations+'</td>'+
+    '<td>'+(p.click_to_signup!=null?(p.click_to_signup*100).toFixed(1)+'%':'–')+'</td>'+
+    '<td class="'+(p===best?'best':(p===worst?'worst':''))+'">'+(p.cac_signup!=null?'$'+p.cac_signup:'–')+'</td>'+
+    '<td>'+(p.cac_activation!=null?'$'+p.cac_activation:'–')+'</td></tr>').join("")+'</tbody></table>';
+}
+
+function render(){stats();vertPills();renderTable();vetVertPicks();renderROI();}
+
+// tabs
+els(".tab").forEach(t=>t.onclick=()=>{
+  els(".tab").forEach(x=>x.classList.remove("on"));els(".pane").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on");el("#pane-"+t.dataset.pane).classList.add("on");
+});
+// sorting + search
+els("#rankTable th[data-s]").forEach(th=>th.onclick=()=>{
+  const k=th.dataset.s; if(sortKey===k){sortDir*=-1}else{sortKey=k;sortDir=-1}
+  els("#rankTable .arr").forEach(a=>a.remove());
+  th.insertAdjacentHTML("beforeend",' <span class="arr">'+(sortDir<0?'▾':'▴')+'</span>');
+  renderTable();
+});
+el("#search").oninput=e=>{q=e.target.value.toLowerCase();renderTable()};
+el("#connectBtn").onclick=()=>connect(el("#apiBase").value);
+el("#apiBase").addEventListener("keydown",e=>{if(e.key==="Enter")connect(e.target.value)});
+el("#vetBtn").onclick=vet;
+el("#vetHandle").addEventListener("keydown",e=>{if(e.key==="Enter")vet()});
+
+// boot: same-origin live backend? (when served by uvicorn)
+fetch("/api/health").then(r=>r.ok?r.json():Promise.reject()).then(()=>connect(location.origin)).catch(loadDemo);
+})();
+</script>
+</body>
+</html>
