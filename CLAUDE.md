@@ -8,8 +8,9 @@ Update it after each meaningful iteration so the website keeps moving in one dir
 This is not a generic personal site.
 It is Charubak Chakrabarti's portfolio and hiring surface.
 
-Primary goal:
-- make Charubak sellable for Web3 growth lead / marketing lead / head of marketing roles
+Primary goal (updated 2026-09-01):
+- present Charubak as Growth Lead at Monorail (swap aggregator on Monad) and document what he ships there
+- keep him credible for future senior growth roles without reading as job-seeking
 
 Secondary goal:
 - show that he is not just a marketer, but a marketer who builds useful AI systems for marketing work
@@ -76,6 +77,22 @@ Changes made:
 - added a homepage card and repo link for `Ad Creative Machine`
 - expanded the homepage bio to focus more on Web3 depth, AI tool-building vision, and personal texture, with less emphasis on edtech history
 - updated Tool Studio so `AI Content Machine` is the default first tool, `Ad Creative Machine` is second, and both hosted tools expose direct repo links from the launch view
+
+### 2026-09-01
+
+Implemented by Claude (Cowork) after Charubak joined Monorail as Growth Lead (mid-July 2026).
+
+Changes made:
+- replaced OPEN_TO_ROLES status and job-seeking copy sitewide with current Growth Lead @ Monorail positioning
+- updated head metadata, OG, and Twitter cards to the Monorail role
+- rewrote hero subtitle to lead with Monorail and Monad
+- added Monorail as role_01 in experience (Journey campaign, Monad Open trading comp), closed Autonity as 2024 to 26, renumbered roles to 5
+- added agent-skills tool card (01/) for the Claude skills suite; renumbered tool cards to 10
+- refreshed ticker, stats (10+ AI systems and skills), story bio column, and third pillar (current seat)
+- rewrote contact section: no longer looking, added monorail.xyz link, changed hire-me CTAs to connect
+- added Claude Agent Skills, Dune Pipelines, DEX Aggregation, Monad Ecosystem to skills grid
+- removed remaining em dashes in tool copy (perp-pulse)
+- campaign facts kept to publicly visible ones; no internal funnel or baseline numbers published
 
 ## Next Likely Improvements
 
